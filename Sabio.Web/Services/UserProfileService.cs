@@ -69,7 +69,6 @@ namespace Sabio.Web.Services
                        p.Status = reader.GetSafeString(startingIndex++);
                        p.Rank = reader.GetSafeString(startingIndex++);
                        p.Branch = reader.GetSafeString(startingIndex++);
-                       p.MissionsCompleted = reader.GetSafeInt32(startingIndex++);
 
                }
 
