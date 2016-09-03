@@ -1,56 +1,29 @@
 ﻿
 @{
-    ViewBag.Title = "test";
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutAdminSimple.cshtml";
 }
     <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-      }
-      #floating-panel {
-        position: absolute;
-        top: 10px;
-        left: 25%;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-        text-align: center;
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-      }
-      #content {
-
-      }
+        #map {
+            height:522px;
+        }
+        #floating-panel {
+            position: fixed;
+            bottom: 10px;
+            left:10px
+        }
     </style>
-
-
+    <div id="map"></div>
     <div id="floating-panel">
-      <input id="address" type="textbox" value="400 Corporate Pointe, Culver City, CA">
+      @*<input id="address" type="textbox" value="400 Corporate Pointe, Culver City, CA">*@
       <input id="create-mission" type="button" value="Create Mission">
     </div>
-    <div id="map"></div>
+    
     <script>
-    var x = document.getElementById("demo");
-
-function getLocation() {
-  if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition, showError);
-  } else {
-      x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
 
 
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
+          zoom: 12,
           center: {lat: 33.99, lng: -118.38}
         });
         var geocoder = new google.maps.Geocoder();
