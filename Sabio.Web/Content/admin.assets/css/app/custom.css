@@ -7,6 +7,8 @@
 .headerRow {
     margin-right: 0;
     margin-left: 0;
+    background-color:#3C3C3C;
+    /*margin-bottom:10px*/
 }
 
 
@@ -17,4 +19,9 @@
 
 .no-padding-top {
     padding-top: 0;
+}
+
+.green-btn {
+    background-color: #437353;
+    color: #ffffff;
 }

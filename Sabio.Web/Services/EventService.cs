@@ -50,9 +50,92 @@ namespace Sabio.Web.Services
 
             EventList.Add(newEvent);
 
-            
+
+
+            newEvent = new Event();
+
+            eventOrganizer.LastName = "Willis";
+            eventOrganizer.Firstname = "Varr";
+            eventOrganizer.UserId = "8675309";
+
+            eventLocation = new Location();
+            eventLocation.Address = "2200 Ritchey St";
+            eventLocation.City = "Santa Ana";
+            eventLocation.Id = 11223344;
+            eventLocation.Latitude = 33.7173491M;
+            eventLocation.Longitude = -117.8461942M;
+            eventLocation.State = "CA";
+            eventLocation.ZipCode = "92705";
+
+            newEvent.Attendees = AttendeeList;
+            newEvent.CountMaybe = 3;
+            newEvent.CountNo = 6;
+            newEvent.CountYes = 8;
+            newEvent.CreateDate = Convert.ToDateTime("2016-08-26T08:00:00");
+            newEvent.Description = "Build homes with Habitat for Humanity of Orange County";
+            newEvent.End = Convert.ToDateTime("2016-09-10T06:00:00");
+            newEvent.EventType = 72;
+            newEvent.ExternalEventId = "asfsbtuj8765hg";
+            newEvent.Id = 8764543;
+            newEvent.IsPublic = true;
+            newEvent.Location = eventLocation;
+            newEvent.ModifiedDate = Convert.ToDateTime("2016-08-27T08:00:00");
+            newEvent.Organizer = eventOrganizer;
+            newEvent.Start = Convert.ToDateTime("2016-09-10T08:00:00");
+            newEvent.Title = "Refurbish a local school's playground";
+
+            EventList.Add(newEvent);
 
             return EventList;
         }
+
+
+        public static List<Event> MyEvents()
+        {
+            List<Event> EventList = new List<Event>();
+
+            Event newEvent = new Event();
+
+            //- Populate this list of users
+            List<UserProfile> AttendeeList = new List<UserProfile>();
+            UserProfile eventOrganizer = new UserProfile();
+
+            Location eventLocation = new Location();
+
+            EventList.Add(newEvent);
+
+
+
+            //subset of events from those listed above
+
+
+
+            return EventList;
+        }
+
+
+        public static Event EventInfo()
+        {
+            Event newEvent = new Event();
+
+            List<UserProfile> AttendeeList = new List<UserProfile>();
+            UserProfile eventOrganizer = new UserProfile();
+
+            Location eventLocation = new Location();
+
+            
+
+
+            //case switch for a few events
+
+
+
+
+            return newEvent;
+        }
+
+
     }
+
+
 }

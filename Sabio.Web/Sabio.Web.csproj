@@ -259,9 +259,11 @@
     <Compile Include="Controllers\Api\BaseApiController.cs" />
     <Compile Include="Controllers\Api\EventsApiController.cs" />
     <Compile Include="Controllers\Api\Login.cs" />
+    <Compile Include="Controllers\Api\MessageApiController.cs" />
     <Compile Include="Controllers\Api\SabioApiController.cs" />
+    <Compile Include="Controllers\Api\SignUpApiController.cs" />
     <Compile Include="Controllers\Api\Tests\TestCenterApiController.cs" />
-    <Compile Include="Controllers\Api\UsersApiController.cs" />
+    <Compile Include="Controllers\Api\UserProfileApiController.cs" />
     <Compile Include="Controllers\Attributes\SabioAuthorizeAttribute.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ExampleController.cs" />
@@ -273,6 +275,8 @@
     <Compile Include="Domain\Event.cs" />
     <Compile Include="Domain\Location.cs" />
     <Compile Include="Domain\Media.cs" />
+    <Compile Include="Domain\Message.cs" />
+    <Compile Include="Domain\SignUp.cs" />
     <Compile Include="Domain\TestPerson.cs" />
     <Compile Include="Domain\Tests\TestBoss.cs" />
     <Compile Include="Domain\Tests\TestEmployee.cs" />
@@ -284,11 +288,15 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Requests\EmailSendRequest.cs" />
     <Compile Include="Models\Requests\IdsRequest.cs" />
     <Compile Include="Models\Requests\ItemsRequest.cs" />
     <Compile Include="Models\Requests\LoginRequest.cs" />
+    <Compile Include="Models\Requests\MessageRequest.cs" />
+    <Compile Include="Models\Requests\SignUpAddRequest.cs" />
     <Compile Include="Models\Requests\Tests\TestEtaRequests.cs" />
     <Compile Include="Models\Requests\Tests\TestPersonAddRequest.cs" />
+    <Compile Include="Models\Requests\UserProfileRequest.cs" />
     <Compile Include="Models\Responses\BaseResponse.cs" />
     <Compile Include="Models\Responses\ErrorResponse.cs" />
     <Compile Include="Models\Responses\ItemResponse.cs" />
@@ -302,6 +310,8 @@
     <Compile Include="Services\EventService.cs" />
     <Compile Include="Services\GroupService.cs" />
     <Compile Include="Services\MessageService.cs" />
+    <Compile Include="Services\NotificationService.cs" />
+    <Compile Include="Services\SignUpService.cs" />
     <Compile Include="Services\Tests\IEmployeeService.cs" />
     <Compile Include="Services\Tests\ITestService.cs" />
     <Compile Include="Services\Tests\TestBossEmployeeService.cs" />
@@ -327,6 +337,7 @@
     <Content Include="Content\admin.assets\css\app\colors-progress-bars.css" />
     <Content Include="Content\admin.assets\css\app\colors-text.css" />
     <Content Include="Content\admin.assets\css\app\cover.css" />
+    <Content Include="Content\admin.assets\css\app\custom.css" />
     <Content Include="Content\admin.assets\css\app\essentials.css" />
     <Content Include="Content\admin.assets\css\app\layout.css" />
     <Content Include="Content\admin.assets\css\app\main.css" />
@@ -337,7 +348,6 @@
     <Content Include="Content\admin.assets\css\app\sidebar.css" />
     <Content Include="Content\admin.assets\css\app\timeline.css" />
     <Content Include="Content\admin.assets\css\app\ui.css" />
-    <Content Include="Content\admin.assets\css\custom.css" />
     <Content Include="Content\admin.assets\css\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\admin.assets\css\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\admin.assets\css\fonts\Material-Design-Iconic-Font.svg" />
@@ -437,6 +447,11 @@
     <Content Include="Content\admin.assets\images\gallery\singing-woman.jpg" />
     <Content Include="Content\admin.assets\images\gallery\young-couple-in-love.jpg" />
     <Content Include="Content\admin.assets\images\helping.jpg" />
+    <Content Include="Content\admin.assets\images\logos_dogtags_e.png" />
+    <Content Include="Content\admin.assets\images\logo_dogtags.png" />
+    <Content Include="Content\admin.assets\images\logo_dogtags_b.png" />
+    <Content Include="Content\admin.assets\images\logo_dogtags_c.png" />
+    <Content Include="Content\admin.assets\images\logo_dogtags_d.png" />
     <Content Include="Content\admin.assets\images\markers\bar-01.png" />
     <Content Include="Content\admin.assets\images\markers\bar-02.png" />
     <Content Include="Content\admin.assets\images\markers\bar-03.png" />
@@ -730,6 +745,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Controllers\SabioReadMe.txt" />
     <Content Include="Domain\SabioReadMe.txt" />
+    <Content Include="EmailTemplates\SignUpEmail.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -881,6 +897,16 @@
     <Content Include="Scripts\bower_components\jquery\src\var\support.js" />
     <Content Include="Scripts\bower_components\jquery\src\var\toString.js" />
     <Content Include="Scripts\bower_components\jquery\src\wrap.js" />
+    <Content Include="Scripts\googleMaps\img\green.png" />
+    <Content Include="Scripts\googleMaps\img\red.png" />
+    <Content Include="Scripts\googleMaps\img\yellow.png" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\examples\example.html" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\images\arrow.png" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\screenshot.png" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\src\infobubble-compiled.js" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\src\infobubble.js" />
+    <Content Include="Scripts\googleMaps\js\jquery-3.1.0.min.js" />
+    <Content Include="Scripts\googleMaps\test2.html" />
     <Content Include="Scripts\ng\angular-animate.js" />
     <Content Include="Scripts\ng\angular-animate.min.js" />
     <Content Include="Scripts\ng\angular-aria.js" />
@@ -1116,6 +1142,14 @@
     <Content Include="Content\admin.assets\js\data\google_maps\markers.json" />
     <Content Include="Content\admin.assets\js\data\vector_maps\france-elections.json" />
     <Content Include="Content\admin.assets\js\data\vector_maps\us-unemployment.json" />
+    <Content Include="Scripts\googleMaps\.DS_Store" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\AUTHORS" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\bower.json" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\CONTRIBUTING.md" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\CONTRIBUTORS" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\LICENSE" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\package.json" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\README.md" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1879,10 +1913,9 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\sabio.js" />
-    <Content Include="Scripts\sabio.services.events.js" />
-    <Content Include="Scripts\sabio.services.login.js" />
-    <Content Include="Scripts\sabio.services.messages.js" />
+    <Content Include="Scripts\stateside.services.events.js" />
+    <Content Include="Scripts\stateside.services.login.js" />
+    <Content Include="Scripts\stateside.services.messages.js" />
     <Content Include="Scripts\sabio\core\controllers\base.controller.js" />
     <Content Include="Scripts\sabio\core\services\alert.service.js" />
     <Content Include="Scripts\sabio\core\services\systemEvent.service.js" />
@@ -1890,7 +1923,10 @@
     <Content Include="Scripts\sabio\core\services\base.service.js" />
     <Content Include="Scripts\sabio\sabio.module.js" />
     <Content Include="Scripts\sabio\sabio.module.xeditable.js" />
+    <Content Include="Scripts\stateside.js" />
+    <Content Include="Scripts\stateside.services.signUp.js" />
     <Content Include="Scripts\_references.js" />
+    <None Include="Views\Home\Map.cshtml" />
     <Content Include="Views\SabioReadMe.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1947,7 +1983,6 @@
       <DependentUpon>respond.min.js</DependentUpon>
     </Content>
     <Content Include="Scripts\sabio.ng.app.js" />
-    <Content Include="Scripts\sabio.tests.services.js" />
     <Content Include="Views\Shared\_LayoutAlternate.cshtml" />
     <Content Include="Views\Example\Index.cshtml" />
     <Content Include="Views\Example\Basic.cshtml" />
@@ -1955,12 +1990,13 @@
     <Content Include="Views\Example\Events.cshtml" />
     <Content Include="Views\Example\Bootstrap.cshtml" />
     <Content Include="Views\Example\Geography.cshtml" />
-    <Content Include="Scripts\sabio.services.events" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutAdminSimple.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Registration.cshtml" />
     <Content Include="Views\Home\Landing.cshtml" />
+    <Content Include="Views\Home\MissionCreate.cshtml" />
+    <Content Include="Views\Home\Mission.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
