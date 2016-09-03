@@ -46,5 +46,11 @@ namespace Sabio.Web.Controllers
             return View();
         }
 
+
+        public ActionResult MissionCreate()
+        {
+            return View();
+        }
+
     }
 }
