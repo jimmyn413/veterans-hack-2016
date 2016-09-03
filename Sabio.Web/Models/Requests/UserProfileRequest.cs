@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Sabio.Web.Domain
+namespace Sabio.Web.Models.Requests
 {
-    public class UserProfile
+    public class UserProfileRequest
     {
+        public string UserId { get; set; }
 
-        public string Firstname { get; set; }
+        public string FirstName { get; set; }
 
         public string LastName { get; set; }
-
-        public string UserId { get; set; }
 
         public string Type { get; set; }
 
@@ -23,7 +23,5 @@ namespace Sabio.Web.Domain
         public string Rank { get; set; }
 
         public string Branch { get; set; }
-
-        public int MissionsCompleted { get; set; }
     }
 }

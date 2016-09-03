@@ -25,13 +25,30 @@ namespace Sabio.Web.Controllers.Api
             {
                 //this request is triggered by the /signUp page
                 await SignUpService.SendConfirmationAsync(request);
+
                 SuccessResponse sr = new SuccessResponse();
+
                 return Request.CreateResponse(HttpStatusCode.OK, sr);
             }
             catch (Exception ex)
             {
                 ErrorResponse response = new ErrorResponse(ex.Message);
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, response);
+            }
+        }
+        [Route(), HttpPut]
+        public HttpResponseMessage ConfirmUserEmail(string userId)
+        {
+            try
+            {
+                SignUpService.ConfirmEmail(userId);
+                var resp = new SuccessResponse();
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
+            }
+            catch (Exception ex)
+            {
+                var resp = new ErrorResponse(ex.Message);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, resp);
             }
         }
     }

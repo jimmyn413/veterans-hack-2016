@@ -258,11 +258,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\BaseApiController.cs" />
     <Compile Include="Controllers\Api\EventsApiController.cs" />
+    <Compile Include="Controllers\Api\InviteApiController.cs" />
     <Compile Include="Controllers\Api\Login.cs" />
+    <Compile Include="Controllers\Api\MessageApiController.cs" />
     <Compile Include="Controllers\Api\SabioApiController.cs" />
     <Compile Include="Controllers\Api\SignUpApiController.cs" />
     <Compile Include="Controllers\Api\Tests\TestCenterApiController.cs" />
-    <Compile Include="Controllers\Api\UsersApiController.cs" />
+    <Compile Include="Controllers\Api\UserProfileApiController.cs" />
     <Compile Include="Controllers\Attributes\SabioAuthorizeAttribute.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ExampleController.cs" />
@@ -274,6 +276,8 @@
     <Compile Include="Domain\Event.cs" />
     <Compile Include="Domain\Location.cs" />
     <Compile Include="Domain\Media.cs" />
+    <Compile Include="Domain\Message.cs" />
+    <Compile Include="Domain\SignUp.cs" />
     <Compile Include="Domain\TestPerson.cs" />
     <Compile Include="Domain\Tests\TestBoss.cs" />
     <Compile Include="Domain\Tests\TestEmployee.cs" />
@@ -289,9 +293,11 @@
     <Compile Include="Models\Requests\IdsRequest.cs" />
     <Compile Include="Models\Requests\ItemsRequest.cs" />
     <Compile Include="Models\Requests\LoginRequest.cs" />
+    <Compile Include="Models\Requests\MessageRequest.cs" />
     <Compile Include="Models\Requests\SignUpAddRequest.cs" />
     <Compile Include="Models\Requests\Tests\TestEtaRequests.cs" />
     <Compile Include="Models\Requests\Tests\TestPersonAddRequest.cs" />
+    <Compile Include="Models\Requests\UserProfileRequest.cs" />
     <Compile Include="Models\Responses\BaseResponse.cs" />
     <Compile Include="Models\Responses\ErrorResponse.cs" />
     <Compile Include="Models\Responses\ItemResponse.cs" />
@@ -740,6 +746,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Controllers\SabioReadMe.txt" />
     <Content Include="Domain\SabioReadMe.txt" />
+    <Content Include="EmailTemplates\MissionInvitation.html" />
     <Content Include="EmailTemplates\SignUpEmail.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -1908,10 +1915,10 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\sabio.js" />
-    <Content Include="Scripts\sabio.services.events.js" />
-    <Content Include="Scripts\sabio.services.login.js" />
-    <Content Include="Scripts\sabio.services.messages.js" />
+    <Content Include="Scripts\stateside.services.events.js" />
+    <Content Include="Scripts\stateside.services.invite.js" />
+    <Content Include="Scripts\stateside.services.login.js" />
+    <Content Include="Scripts\stateside.services.messages.js" />
     <Content Include="Scripts\sabio\core\controllers\base.controller.js" />
     <Content Include="Scripts\sabio\core\services\alert.service.js" />
     <Content Include="Scripts\sabio\core\services\systemEvent.service.js" />
@@ -1919,6 +1926,8 @@
     <Content Include="Scripts\sabio\core\services\base.service.js" />
     <Content Include="Scripts\sabio\sabio.module.js" />
     <Content Include="Scripts\sabio\sabio.module.xeditable.js" />
+    <Content Include="Scripts\stateside.js" />
+    <Content Include="Scripts\stateside.services.signUp.js" />
     <Content Include="Scripts\_references.js" />
     <None Include="Views\Home\Map.cshtml" />
     <Content Include="Views\SabioReadMe.txt" />
@@ -1977,7 +1986,6 @@
       <DependentUpon>respond.min.js</DependentUpon>
     </Content>
     <Content Include="Scripts\sabio.ng.app.js" />
-    <Content Include="Scripts\sabio.tests.services.js" />
     <Content Include="Views\Shared\_LayoutAlternate.cshtml" />
     <Content Include="Views\Example\Index.cshtml" />
     <Content Include="Views\Example\Basic.cshtml" />
@@ -1985,13 +1993,15 @@
     <Content Include="Views\Example\Events.cshtml" />
     <Content Include="Views\Example\Bootstrap.cshtml" />
     <Content Include="Views\Example\Geography.cshtml" />
-    <Content Include="Scripts\sabio.services.events" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutAdminSimple.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Registration.cshtml" />
     <Content Include="Views\Home\Landing.cshtml" />
     <Content Include="Views\Home\MissionCreate.cshtml" />
+    <Content Include="Views\Home\Mission.cshtml" />
+    <Content Include="Views\Home\Messages.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

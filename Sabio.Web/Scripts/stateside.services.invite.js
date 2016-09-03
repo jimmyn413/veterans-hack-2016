@@ -1,6 +1,9 @@
-﻿sabio.services.messages = function (onSuccess, onError) {
-    var url = "/api/messages/";
+﻿if (!stateside.services.invite) {
+    stateside.services.invite = {}
+}
 
+stateside.services.invite.send = function (data, onSuccess, onError) {
+    var url = "/api/invite"
     var settings = {
         cache: false
         , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
@@ -8,9 +11,7 @@
         , dataType: "json"
         , success: onSuccess
         , error: onError
-        , type: "GET"
+        , type: "POST"
     };
     $.ajax(url, settings);
-
-
 }
