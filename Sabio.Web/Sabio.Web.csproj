@@ -326,6 +326,7 @@
     <Content Include="Content\admin.assets\css\app\sidebar.css" />
     <Content Include="Content\admin.assets\css\app\timeline.css" />
     <Content Include="Content\admin.assets\css\app\ui.css" />
+    <Content Include="Content\admin.assets\css\custom.css" />
     <Content Include="Content\admin.assets\css\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\admin.assets\css\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\admin.assets\css\fonts\Material-Design-Iconic-Font.svg" />
@@ -406,6 +407,7 @@
     <Content Include="Content\admin.assets\images\choose\sidebar-size-1.jpg" />
     <Content Include="Content\admin.assets\images\choose\sidebar-size-2.jpg" />
     <Content Include="Content\admin.assets\images\choose\sidebar-size-3.jpg" />
+    <Content Include="Content\admin.assets\images\dog-tags.png" />
     <Content Include="Content\admin.assets\images\flags\Flag_of_France.svg" />
     <Content Include="Content\admin.assets\images\flags\Flag_of_Germany.svg" />
     <Content Include="Content\admin.assets\images\flags\Flag_of_Poland.svg" />
@@ -1938,6 +1940,11 @@
     <Content Include="Views\Example\Events.cshtml" />
     <Content Include="Views\Example\Bootstrap.cshtml" />
     <Content Include="Views\Example\Geography.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdminSimple.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Registration.cshtml" />
+    <Content Include="Views\Home\Landing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

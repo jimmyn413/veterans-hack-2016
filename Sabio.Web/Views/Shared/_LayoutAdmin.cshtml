@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>App Name</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <!-- Vendor CSS BUNDLE-->
+    <link href="~/Content/admin.assets/css/vendor/all.css" rel="stylesheet">
+
+    <!-- APP CSS BUNDLE [css/app/app.css]-->
+    <link href="~/Content/admin.assets/css/app/app.css" rel="stylesheet">
+
+    <!-- CUSTOM CSS-->
+    <link href="~/Content/admin.assets/css/app/custom.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <!-- Inline Script for colors and config objects; used by various external scripts; -->
+    <script>
+        var colors = {
+            "danger-color": "#e74c3c",
+            "success-color": "#81b53e",
+            "warning-color": "#f0ad4e",
+            "inverse-color": "#2c3e50",
+            "info-color": "#2d7cb5",
+            "default-color": "#6e7882",
+            "default-light-color": "#cfd9db",
+            "purple-color": "#9D8AC7",
+            "mustard-color": "#d4d171",
+            "lightred-color": "#e15258",
+            "body-bg": "#f6f6f6"
+        };
+        var config = {
+            theme: "admin",
+            skins: {
+                "default": {
+                    "primary-color": "#3498db"
+                }
+            }
+        };
+    </script>
+
+    <!-- Vendor Scripts Bundle -->
+    <script src="~/Content/admin.assets/js/vendor/all.js"></script>
+
+    <!-- App Scripts Bundle -->
+    <script src="~/Content/admin.assets/js/app/app.js"></script>
+
+
+</body>
+</html>
