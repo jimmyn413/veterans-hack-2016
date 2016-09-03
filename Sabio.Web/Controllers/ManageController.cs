@@ -8,6 +8,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Sabio.Web.Models;
 
+// ********** FYI: System Generated File
+
 namespace Sabio.Web.Controllers
 {
     [Authorize]
@@ -195,9 +197,7 @@ namespace Sabio.Web.Controllers
         }
 
         //
-        // POST: /Manage/RemovePhoneNumber
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        // GET: /Manage/RemovePhoneNumber
         public async Task<ActionResult> RemovePhoneNumber()
         {
             var result = await UserManager.SetPhoneNumberAsync(User.Identity.GetUserId(), null);

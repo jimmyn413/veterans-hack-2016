@@ -10,6 +10,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Sabio.Web.Models;
 
+// ********** FYI: System Generated File
+
+
 namespace Sabio.Web.Controllers
 {
     [Authorize]
@@ -391,7 +394,7 @@ namespace Sabio.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            AuthenticationManager.SignOut();
             return RedirectToAction("Index", "Home");
         }
 
