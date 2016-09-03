@@ -55,7 +55,7 @@ namespace Sabio.Web.Services
             newEvent = new Event();
 
             eventOrganizer.LastName = "Willis";
-            eventOrganizer.Firstname = "Varr";
+            eventOrganizer.FirstName = "Varr";
             eventOrganizer.UserId = "8675309";
 
             eventLocation = new Location();
