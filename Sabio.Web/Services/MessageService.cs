@@ -73,6 +73,27 @@ namespace Sabio.Web.Services
         }
 
 
+
+        public static void Post(MessageRequest model)
+        {
+
+
+            DataProvider.ExecuteNonQuery(GetConnection, "dbo.Messages_Insert"
+               , inputParamMapper: delegate (SqlParameterCollection paramCollection)
+               {
+                   paramCollection.AddWithValue("@Message", model.Message);
+                   paramCollection.AddWithValue("@SenderId", model.SenderId);
+                   paramCollection.AddWithValue("@ReceiverId", model.ReceiverId);
+
+               }, returnParameters: delegate (SqlParameterCollection param)
+               {
+                   
+               }
+               );
+
+            
+        }
+
     }
 
 

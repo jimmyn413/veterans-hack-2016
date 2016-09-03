@@ -263,7 +263,7 @@
     <Compile Include="Controllers\Api\SabioApiController.cs" />
     <Compile Include="Controllers\Api\SignUpApiController.cs" />
     <Compile Include="Controllers\Api\Tests\TestCenterApiController.cs" />
-    <Compile Include="Controllers\Api\UsersApiController.cs" />
+    <Compile Include="Controllers\Api\UserProfileApiController.cs" />
     <Compile Include="Controllers\Attributes\SabioAuthorizeAttribute.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ExampleController.cs" />
@@ -1923,6 +1923,7 @@
     <Content Include="Scripts\sabio\sabio.module.js" />
     <Content Include="Scripts\sabio\sabio.module.xeditable.js" />
     <Content Include="Scripts\stateside.js" />
+    <Content Include="Scripts\stateside.services.userprofile.js" />
     <Content Include="Scripts\_references.js" />
     <None Include="Views\Home\Map.cshtml" />
     <Content Include="Views\SabioReadMe.txt" />

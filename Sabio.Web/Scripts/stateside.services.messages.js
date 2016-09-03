@@ -1,4 +1,6 @@
-﻿stateside.services.messages = function (senderId, receiverId, onSuccess, onError) {
+﻿stateside.services.messages = stateside.services.messages || {};
+
+stateside.services.messages = function (senderId, receiverId, onSuccess, onError) {
     var url = "/api/messages/?senderId=" + senderId + "&receiverId=" + receiverId;
 
     var settings = {
