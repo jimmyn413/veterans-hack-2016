@@ -442,6 +442,11 @@
     <Content Include="Content\admin.assets\images\gallery\singing-woman.jpg" />
     <Content Include="Content\admin.assets\images\gallery\young-couple-in-love.jpg" />
     <Content Include="Content\admin.assets\images\helping.jpg" />
+    <Content Include="Content\admin.assets\images\logos_dogtags_e.png" />
+    <Content Include="Content\admin.assets\images\logo_dogtags.png" />
+    <Content Include="Content\admin.assets\images\logo_dogtags_b.png" />
+    <Content Include="Content\admin.assets\images\logo_dogtags_c.png" />
+    <Content Include="Content\admin.assets\images\logo_dogtags_d.png" />
     <Content Include="Content\admin.assets\images\markers\bar-01.png" />
     <Content Include="Content\admin.assets\images\markers\bar-02.png" />
     <Content Include="Content\admin.assets\images\markers\bar-03.png" />
@@ -1986,6 +1991,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Registration.cshtml" />
     <Content Include="Views\Home\Landing.cshtml" />
+    <Content Include="Views\Home\MissionCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
