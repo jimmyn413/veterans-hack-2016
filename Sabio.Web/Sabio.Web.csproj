@@ -257,6 +257,7 @@
     <Compile Include="Classes\Extensions\HtmlHelperExt.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\BaseApiController.cs" />
+    <Compile Include="Controllers\Api\EventsApiController.cs" />
     <Compile Include="Controllers\Api\SabioApiController.cs" />
     <Compile Include="Controllers\Api\Tests\TestCenterApiController.cs" />
     <Compile Include="Controllers\Api\UsersApiController.cs" />
@@ -268,9 +269,13 @@
     <Compile Include="Controllers\SabioController.cs" />
     <Compile Include="Controllers\TestsController.cs" />
     <Compile Include="Classes\PagedList.cs" />
+    <Compile Include="Domain\Event.cs" />
+    <Compile Include="Domain\Location.cs" />
+    <Compile Include="Domain\Media.cs" />
     <Compile Include="Domain\TestPerson.cs" />
     <Compile Include="Domain\Tests\TestBoss.cs" />
     <Compile Include="Domain\Tests\TestEmployee.cs" />
+    <Compile Include="Domain\UserProfile.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -292,6 +297,7 @@
     <Compile Include="Models\ViewModels\SabioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\EventService.cs" />
     <Compile Include="Services\Tests\IEmployeeService.cs" />
     <Compile Include="Services\Tests\ITestService.cs" />
     <Compile Include="Services\Tests\TestBossEmployeeService.cs" />
