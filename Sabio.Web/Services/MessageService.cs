@@ -15,15 +15,15 @@ namespace Sabio.Web.Services
     {
 
         //return message between Users
-        public static List<Message> GetConvo(MessageRequest model)
+        public static List<Message> GetConvo(string senderId, string receiverId)
         {
             List<Message> list = null;
 
             DataProvider.ExecuteCmd(GetConnection, "dbo.Messages_SelectMyMessages"
                , inputParamMapper: delegate (SqlParameterCollection paramCollection)
                {
-                   paramCollection.AddWithValue("@SenderId", model.SenderId);
-                   paramCollection.AddWithValue("@ReceiverId", model.ReceiverId);
+                   paramCollection.AddWithValue("@SenderId", senderId);
+                   paramCollection.AddWithValue("@ReceiverId", receiverId);
 
 
                }, map: delegate (IDataReader reader, short set) //function from BaseService
@@ -72,6 +72,27 @@ namespace Sabio.Web.Services
 
         }
 
+
+
+        public static void Post(MessageRequest model)
+        {
+
+
+            DataProvider.ExecuteNonQuery(GetConnection, "dbo.Messages_Insert"
+               , inputParamMapper: delegate (SqlParameterCollection paramCollection)
+               {
+                   paramCollection.AddWithValue("@Message", model.Message);
+                   paramCollection.AddWithValue("@SenderId", model.SenderId);
+                   paramCollection.AddWithValue("@ReceiverId", model.ReceiverId);
+
+               }, returnParameters: delegate (SqlParameterCollection param)
+               {
+                   
+               }
+               );
+
+            
+        }
 
     }
 

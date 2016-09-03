@@ -23,5 +23,7 @@ namespace Sabio.Web.Domain
         public string Rank { get; set; }
 
         public string Branch { get; set; }
+
+        public int MissionsCompleted { get; set; }
     }
 }

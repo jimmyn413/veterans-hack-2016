@@ -15,18 +15,31 @@ namespace Sabio.Web.Controllers.Api
     public class MessageApiController : ApiController
     {
         [Route, HttpGet]
-        public HttpResponseMessage GetConvo(MessageRequest model)
+        public HttpResponseMessage GetConvo(string senderId, string receiverId)
         {
 
-            model.SenderId = UserService.GetCurrentUserId();
 
-            List<Message> messages = MessageService.GetConvo(model);
+            //senderId = UserService.GetCurrentUserId();
+
+            List<Message> messages = MessageService.GetConvo(senderId, receiverId);
 
             ItemsResponse<Message> response = new ItemsResponse<Message>();
 
             response.Items = messages;
 
             return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
+
+        [Route, HttpPost]
+        public HttpResponseMessage Post(MessageRequest model)
+        {
+
+            //model.SenderId = UserService.GetCurrentUserId();
+
+            MessageService.Post(model);
+
+            return Request.CreateResponse(HttpStatusCode.OK, model);
         }
 
     }
