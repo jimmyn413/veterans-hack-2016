@@ -316,6 +316,7 @@
     <Content Include="Content\admin.assets\css\app\colors-progress-bars.css" />
     <Content Include="Content\admin.assets\css\app\colors-text.css" />
     <Content Include="Content\admin.assets\css\app\cover.css" />
+    <Content Include="Content\admin.assets\css\app\custom.css" />
     <Content Include="Content\admin.assets\css\app\essentials.css" />
     <Content Include="Content\admin.assets\css\app\layout.css" />
     <Content Include="Content\admin.assets\css\app\main.css" />
@@ -326,7 +327,6 @@
     <Content Include="Content\admin.assets\css\app\sidebar.css" />
     <Content Include="Content\admin.assets\css\app\timeline.css" />
     <Content Include="Content\admin.assets\css\app\ui.css" />
-    <Content Include="Content\admin.assets\css\custom.css" />
     <Content Include="Content\admin.assets\css\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\admin.assets\css\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\admin.assets\css\fonts\Material-Design-Iconic-Font.svg" />
