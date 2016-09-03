@@ -21,7 +21,7 @@ namespace Sabio.Web.Domain
 
         public string FilePath { get; set; }
 
-        public string FullUrl
+        /*public string FullUrl
         {
             get
             {
@@ -35,6 +35,6 @@ namespace Sabio.Web.Domain
                 }
 
             }
-        }
+        }*/
     }
 }

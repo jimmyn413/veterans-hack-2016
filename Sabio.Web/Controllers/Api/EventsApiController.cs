@@ -11,12 +11,12 @@ namespace Sabio.Web.Controllers.Api
     [RoutePrefix("api/events")]
     public class EventsApiController : ApiController
     {
-        public HttpResponseMessage DiscoverEvents()
+        /*public HttpResponseMessage DiscoverEvents()
         {
             //- Get all events in this area
 
             //- Call a userService 
             EventService.GetNearbyEvents();
-        }
+        }*/
     }
 }
