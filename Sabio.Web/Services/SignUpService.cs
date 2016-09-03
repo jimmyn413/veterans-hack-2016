@@ -23,15 +23,12 @@ namespace Sabio.Web.Services
             IdentityUser newUser = UserService.CreateUser(request.Email, request.Password);
             string userId = newUser.Id;
 
-            ////create Security token and save to table
-            //SecurityTokenAddRequest newSecurityToken = new SecurityTokenAddRequest();
-            //newSecurityToken.Guid = Guid.NewGuid();
-            //newSecurityToken.CompanyName = request.CompanyName;
-            //newSecurityToken.UserEmail = request.Email;
-            //newSecurityToken.TenantId = tenantId;
-            //newSecurityToken.UserId = userId;
-            //newSecurityToken.TokenTypeId = 1;
-            //_securityTokenService.Post(newSecurityToken);
+            UserProfileRequest newUserProfile = new UserProfileRequest();
+            newUserProfile.UserId = userId;
+            newUserProfile.FirstName = request.FirstName;
+            newUserProfile.LastName = request.LastName;
+
+            UserProfileService.Post(newUserProfile);
 
             //send confirmation email with embed guid
             //grab html for email body
@@ -40,13 +37,13 @@ namespace Sabio.Web.Services
 
             //embed guid email
             //--replace url
-            string URL = "http://localhost:1552/";
+            string URL = "http://localhost:1552";
             html = html.Replace("[[URL-GOES-HERE]]", URL);
             //--replace endpoint
             string endPoint = "/Register/";
             html = html.Replace("[[END-POINT-GOES-HERE]]", endPoint);
             //--replace guid
-            //html = html.Replace("[[xxxxxxxxxxxxxxx]]", newSecurityToken.Guid.ToString());
+            html = html.Replace("[[xxxxxxxxxxxxxxx]]", userId);
             //--call email service
             EmailSendRequest confirmEmail = new EmailSendRequest();
             confirmEmail.Destination = request.Email;
@@ -56,5 +53,45 @@ namespace Sabio.Web.Services
             await NotificationService.SendEmailAsync(confirmEmail);
 
         }
+
+        public static void UpdateAspUser(SignUpAddRequest model)
+        {
+            DataProvider.ExecuteNonQuery(GetConnection, "dbo.AspNetUsers_UpdateEmailConfirmed"
+                , inputParamMapper: delegate (SqlParameterCollection paramcollection)
+                {
+                    paramcollection.AddWithValue("@Email", model.Email);
+
+                }, returnParameters: null);
+        }
+
+        public static SignUp SelectEmailById (string userId)
+        {
+            SignUp result = null;
+            DataProvider.ExecuteCmd(GetConnection, "dbo.AspNetUsers_SelectEmailById"
+               , inputParamMapper: delegate (SqlParameterCollection pc)
+               {
+                   pc.AddWithValue("@UserId", userId);
+               }
+               , map: delegate (IDataReader reader, short set)
+               {
+                   result = new SignUp();
+                   int startingIndex = 0; //startingOrdinal
+                   result.Email = reader.GetSafeString(startingIndex++);
+ 
+               }
+                                 
+               );
+            return result;
+
+        }
+        public static void ConfirmEmail(string userId)
+        {
+            SignUpAddRequest editSignUp = new SignUpAddRequest();
+            SignUp su = SelectEmailById(userId);
+            editSignUp.Email = su.Email;
+
+            UpdateAspUser(editSignUp);
+        }
+
     }
 }
