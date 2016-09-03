@@ -276,6 +276,7 @@
     <Compile Include="Domain\Location.cs" />
     <Compile Include="Domain\Media.cs" />
     <Compile Include="Domain\Message.cs" />
+    <Compile Include="Domain\SignUp.cs" />
     <Compile Include="Domain\TestPerson.cs" />
     <Compile Include="Domain\Tests\TestBoss.cs" />
     <Compile Include="Domain\Tests\TestEmployee.cs" />
@@ -1923,6 +1924,7 @@
     <Content Include="Scripts\sabio\sabio.module.js" />
     <Content Include="Scripts\sabio\sabio.module.xeditable.js" />
     <Content Include="Scripts\stateside.js" />
+    <Content Include="Scripts\stateside.services.signUp.js" />
     <Content Include="Scripts\stateside.services.userprofile.js" />
     <Content Include="Scripts\_references.js" />
     <None Include="Views\Home\Map.cshtml" />
