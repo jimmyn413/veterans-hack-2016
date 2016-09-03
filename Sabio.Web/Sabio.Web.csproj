@@ -1915,7 +1915,7 @@
     <Content Include="Scripts\sabio\sabio.module.js" />
     <Content Include="Scripts\sabio\sabio.module.xeditable.js" />
     <Content Include="Scripts\_references.js" />
-    <None Include="Views\Home\Test.cshtml" />
+    <None Include="Views\Home\Map.cshtml" />
     <Content Include="Views\SabioReadMe.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
