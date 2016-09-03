@@ -46,5 +46,11 @@ namespace Sabio.Web.Controllers
             return View();
         }
 
+        //[Route("test"), HttpGet]
+        public ActionResult test()
+        {
+            return View();
+        }
+
     }
 }

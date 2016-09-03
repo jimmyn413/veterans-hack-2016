@@ -869,6 +869,16 @@
     <Content Include="Scripts\bower_components\jquery\src\var\support.js" />
     <Content Include="Scripts\bower_components\jquery\src\var\toString.js" />
     <Content Include="Scripts\bower_components\jquery\src\wrap.js" />
+    <Content Include="Scripts\googleMaps\img\green.png" />
+    <Content Include="Scripts\googleMaps\img\red.png" />
+    <Content Include="Scripts\googleMaps\img\yellow.png" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\examples\example.html" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\images\arrow.png" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\screenshot.png" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\src\infobubble-compiled.js" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\src\infobubble.js" />
+    <Content Include="Scripts\googleMaps\js\jquery-3.1.0.min.js" />
+    <Content Include="Scripts\googleMaps\test2.html" />
     <Content Include="Scripts\ng\angular-animate.js" />
     <Content Include="Scripts\ng\angular-animate.min.js" />
     <Content Include="Scripts\ng\angular-aria.js" />
@@ -1104,6 +1114,14 @@
     <Content Include="Content\admin.assets\js\data\google_maps\markers.json" />
     <Content Include="Content\admin.assets\js\data\vector_maps\france-elections.json" />
     <Content Include="Content\admin.assets\js\data\vector_maps\us-unemployment.json" />
+    <Content Include="Scripts\googleMaps\.DS_Store" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\AUTHORS" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\bower.json" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\CONTRIBUTING.md" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\CONTRIBUTORS" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\LICENSE" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\package.json" />
+    <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\README.md" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1876,6 +1894,7 @@
     <Content Include="Scripts\sabio\sabio.module.js" />
     <Content Include="Scripts\sabio\sabio.module.xeditable.js" />
     <Content Include="Scripts\_references.js" />
+    <None Include="Views\Home\Test.cshtml" />
     <Content Include="Views\SabioReadMe.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
