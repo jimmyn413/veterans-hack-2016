@@ -15,12 +15,13 @@ namespace Sabio.Web.Controllers.Api
     public class MessageApiController : ApiController
     {
         [Route, HttpGet]
-        public HttpResponseMessage GetConvo(MessageRequest model)
+        public HttpResponseMessage GetConvo(string senderId, string receiverId)
         {
 
-            model.SenderId = UserService.GetCurrentUserId();
 
-            List<Message> messages = MessageService.GetConvo(model);
+            //senderId = UserService.GetCurrentUserId();
+
+            List<Message> messages = MessageService.GetConvo(senderId, receiverId);
 
             ItemsResponse<Message> response = new ItemsResponse<Message>();
 
