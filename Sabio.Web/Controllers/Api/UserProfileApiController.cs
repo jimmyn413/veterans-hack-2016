@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace Sabio.Web.Controllers.Api
 {
-    public class UsersApiController : ApiController
+    public class UserProfileApiController : ApiController
     {
 
 

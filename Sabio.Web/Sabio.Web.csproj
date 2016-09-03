@@ -263,7 +263,7 @@
     <Compile Include="Controllers\Api\SabioApiController.cs" />
     <Compile Include="Controllers\Api\SignUpApiController.cs" />
     <Compile Include="Controllers\Api\Tests\TestCenterApiController.cs" />
-    <Compile Include="Controllers\Api\UsersApiController.cs" />
+    <Compile Include="Controllers\Api\UserProfileApiController.cs" />
     <Compile Include="Controllers\Attributes\SabioAuthorizeAttribute.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ExampleController.cs" />
