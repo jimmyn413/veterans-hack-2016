@@ -36,5 +36,20 @@ namespace Sabio.Web.Controllers.Api
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, response);
             }
         }
+        [Route(), HttpPut]
+        public HttpResponseMessage ConfirmUserEmail(string userId)
+        {
+            try
+            {
+                SignUpService.ConfirmEmail(userId);
+                var resp = new SuccessResponse();
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
+            }
+            catch (Exception ex)
+            {
+                var resp = new ErrorResponse(ex.Message);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, resp);
+            }
+        }
     }
 }
