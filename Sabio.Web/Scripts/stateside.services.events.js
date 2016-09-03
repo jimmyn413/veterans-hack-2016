@@ -14,6 +14,7 @@ stateside.services.events = function (id, onSuccess, onError) {
     };
     $.ajax(url, settings);
 
+
 }
 
 stateside.services.events = function (onSuccess, onError) {

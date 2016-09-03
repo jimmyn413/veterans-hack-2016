@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sabio.Web.Models.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -58,6 +59,13 @@ namespace Sabio.Web.Controllers
             return View();
         }
 
+        public ActionResult Mission(int id)
+        {
+            ItemViewModel<int> model = new ItemViewModel<int>();
+            model.Item = id;
+
+            return View(model);
+        }
 
 
 

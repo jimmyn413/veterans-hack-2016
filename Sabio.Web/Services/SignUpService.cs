@@ -37,7 +37,7 @@ namespace Sabio.Web.Services
 
             //embed guid email
             //--replace url
-            string URL = "http://localhost:1552/";
+            string URL = "http://localhost:1552";
             html = html.Replace("[[URL-GOES-HERE]]", URL);
             //--replace endpoint
             string endPoint = "/Register/";

@@ -30,17 +30,5 @@ namespace Sabio.Web.Controllers.Api
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
-
-        [Route, HttpPost]
-        public HttpResponseMessage Post(MessageRequest model)
-        {
-
-            //model.SenderId = UserService.GetCurrentUserId();
-
-            MessageService.Post(model);
-
-            return Request.CreateResponse(HttpStatusCode.OK, model);
-        }
-
     }
 }

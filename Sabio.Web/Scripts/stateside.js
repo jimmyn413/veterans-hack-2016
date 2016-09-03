@@ -16,17 +16,17 @@ stateside.moduleOptions = {
     APPNAME: "SabioApp"
         , extraModuleDependencies: []
         , runners: []
-        , page: sabio.page//we need this object here for later use
+        , page: stateside.page//we need this object here for later use
 }
 
 
 stateside.layout.startUp = function () {
 
-    console.debug("sabio.layout.startUp");
+    console.debug("stateside.layout.startUp");
 
-    //this does a null check on sabio.page.startUp
+    //this does a null check on stateside.page.startUp
     if (stateside.page.startUp) {
-        console.debug("sabio.page.startUp");
+        console.debug("stateside.page.startUp");
         stateside.page.startUp();
     }
 
