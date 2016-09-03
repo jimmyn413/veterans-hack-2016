@@ -25,7 +25,9 @@ namespace Sabio.Web.Controllers.Api
             {
                 //this request is triggered by the /signUp page
                 await SignUpService.SendConfirmationAsync(request);
+
                 SuccessResponse sr = new SuccessResponse();
+
                 return Request.CreateResponse(HttpStatusCode.OK, sr);
             }
             catch (Exception ex)

@@ -259,6 +259,7 @@
     <Compile Include="Controllers\Api\BaseApiController.cs" />
     <Compile Include="Controllers\Api\EventsApiController.cs" />
     <Compile Include="Controllers\Api\Login.cs" />
+    <Compile Include="Controllers\Api\MessageApiController.cs" />
     <Compile Include="Controllers\Api\SabioApiController.cs" />
     <Compile Include="Controllers\Api\SignUpApiController.cs" />
     <Compile Include="Controllers\Api\Tests\TestCenterApiController.cs" />
@@ -274,6 +275,7 @@
     <Compile Include="Domain\Event.cs" />
     <Compile Include="Domain\Location.cs" />
     <Compile Include="Domain\Media.cs" />
+    <Compile Include="Domain\Message.cs" />
     <Compile Include="Domain\TestPerson.cs" />
     <Compile Include="Domain\Tests\TestBoss.cs" />
     <Compile Include="Domain\Tests\TestEmployee.cs" />
@@ -289,9 +291,11 @@
     <Compile Include="Models\Requests\IdsRequest.cs" />
     <Compile Include="Models\Requests\ItemsRequest.cs" />
     <Compile Include="Models\Requests\LoginRequest.cs" />
+    <Compile Include="Models\Requests\MessageRequest.cs" />
     <Compile Include="Models\Requests\SignUpAddRequest.cs" />
     <Compile Include="Models\Requests\Tests\TestEtaRequests.cs" />
     <Compile Include="Models\Requests\Tests\TestPersonAddRequest.cs" />
+    <Compile Include="Models\Requests\UserProfileRequest.cs" />
     <Compile Include="Models\Responses\BaseResponse.cs" />
     <Compile Include="Models\Responses\ErrorResponse.cs" />
     <Compile Include="Models\Responses\ItemResponse.cs" />

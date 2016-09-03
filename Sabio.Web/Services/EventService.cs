@@ -17,8 +17,8 @@ namespace Sabio.Web.Services
             //- Populate this list of users
             List<UserProfile> AttendeeList = new List<UserProfile>();
             UserProfile eventOrganizer = new UserProfile();
-            eventOrganizer.profileLastName = "Smith";
-            eventOrganizer.profileName = "Joe";
+            eventOrganizer.LastName = "Smith";
+            eventOrganizer.Firstname = "Joe";
             eventOrganizer.UserId = "54322352";
 
             Location eventLocation = new Location();
