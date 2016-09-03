@@ -1,6 +1,6 @@
-﻿sabio.services.login = sabio.services.login || {};
+﻿stateside.services.login = stateside.services.login || {};
 
-sabio.services.login = function (data, onSuccess, onError) {
+stateside.services.login = function (data, onSuccess, onError) {
     var url = "/api/login/";
 
     var settings = {

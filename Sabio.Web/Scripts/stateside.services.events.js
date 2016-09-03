@@ -1,6 +1,6 @@
-﻿sabio.services.events = sabio.services.events || {};
+﻿stateside.services.events = stateside.services.events || {};
 
-sabio.services.events = function (id, onSuccess, onError) {
+stateside.services.events = function (id, onSuccess, onError) {
     var url = "/api/events/" + id;
 
     var settings = {
@@ -17,7 +17,7 @@ sabio.services.events = function (id, onSuccess, onError) {
 
 }
 
-sabio.services.events = function (onSuccess, onError) {
+stateside.services.events = function (onSuccess, onError) {
     var url = "/api/events/";
 
     var settings = {

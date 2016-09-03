@@ -1,4 +1,4 @@
-﻿sabio.services.messages = function (onSuccess, onError) {
+﻿stateside.services.messages = function (onSuccess, onError) {
     var url = "/api/messages/";
 
     var settings = {
