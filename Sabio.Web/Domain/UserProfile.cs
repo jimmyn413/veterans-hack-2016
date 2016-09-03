@@ -8,9 +8,9 @@ namespace Sabio.Web.Domain
     public class UserProfile
     {
 
-        public string profileName { get; set; }
+        public string FirstName { get; set; }
 
-        public string profileLastName { get; set; }
+        public string LastName { get; set; }
 
         public string UserId { get; set; }
 

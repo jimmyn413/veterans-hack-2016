@@ -15,11 +15,12 @@ namespace Sabio.Web.Services
             Event newEvent = new Event();
 
             //- Populate this list of users
-            List<UserProfile> AttendeeList = new List<UserProfile>();
+            List<UserProfile> AttendeeList = UserProfileService.GetAllUsers();
+
             UserProfile eventOrganizer = new UserProfile();
-            eventOrganizer.profileLastName = "Smith";
-            eventOrganizer.profileName = "Joe";
-            eventOrganizer.UserId = "54322352";
+            eventOrganizer.FirstName = "Billy";
+            eventOrganizer.LastName = "Smith";
+            eventOrganizer.UserId = "64c45c5h4v57v6v6h676vh";
 
             Location eventLocation = new Location();
             eventLocation.Address = "400 Corporate Pointe";
@@ -49,11 +50,7 @@ namespace Sabio.Web.Services
 
             EventList.Add(newEvent);
 
-
-
-            newEvent = new Event();
-
-            EventList.Add(newEvent);
+            
 
             return EventList;
         }
