@@ -8,7 +8,7 @@
     @*<input id="address" type="textbox" value="400 Corporate Pointe, Culver City, CA">*@
     <input id="create-mission" type="button" value="Create Mission">
 </div>
-
+<script src="~/Content/admin.assets/js/vendor/core/jquery.js"></script>
 <script>
     function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -21,25 +21,46 @@
         geocodeAddress(geocoder, map);
     });
 
-
     var markers = [];
 
-    var geolocations = [{ lat: 33.9808243, lng: -118.3771056 }, { lat: 33.9885749, lng: -118.3869416 }, { lat: 33.9959814, lng: -118.3731943 }, { lat: 33.9621535, lng: -118.4196815 }, { lat: 33.9274214, lng: -118.4067537 }];
+    var geolocations = [{ lat: 33.9808243, lng: -118.3771056, url: '/Home/Mission/1' }, { lat: 33.9885749, lng: -118.3869416, url: '/Home/Mission/2' }, { lat: 33.9959814, lng: -118.3731943, url: '/Home/Mission/3' }, { lat: 33.9621535, lng: -118.4196815, url: '/Home/Mission/4' }, { lat: 33.9274214, lng: -118.4067537, url: '/Home/Mission/5' }];
+
+    function loadURL(marker) {
+        return function () {
+            window.location.href = marker.url;
+        }
+    }
 
     function createMarkers(locations) {
         var i = 0;
         locations.forEach(item => {
-            markers[i] = new google.maps.Marker({
+            var marker = new google.maps.Marker({
                 position: { 'lat': item.lat, 'lng': item.lng },
                 map: map,
-                icon: '../../Content/admin.assets/images/markers/red.png'
+                icon: '../../Content/admin.assets/images/markers/red.png',
+                type: 'point',
+                id: i,
+                clickable: true,
+                url: item.url
             });
+            //markers[i].setValues({type: 'point', id: i}) 
             i++;
+            google.maps.event.addListener(marker, 'click', loadURL(marker));
         });
     }
+    
+    //function markerIds(array) {
+    //    array.forEach(item => {
+    //        console.log(item.get('id'));
+    //    })
+    //}
+    //markerIds(markers);
+
+    console.log(markers);
+        
     createMarkers(geolocations);
 
-    }
+}
 
     function geocodeAddress(geocoder, resultsMap) {
     var address = document.getElementById('address').value;
@@ -56,10 +77,16 @@
         }
     });
     }
+    
+    $(document).ready(function() {
+        $('#1').click(function () {
+            console.log("click working");
+        })
+    })
+
 </script>
+
+
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYqzwyH6H-CRc3N3aIyD966wjokFIALUI&callback=initMap">
 </script>
-
-
-
