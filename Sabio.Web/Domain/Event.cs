@@ -65,5 +65,11 @@ namespace Sabio.Web.Domain
 
         public string ExternalEventId { get; set; }
 
+        public string BeneficiaryString { get; set; }
+
+        public string BeneficiaryId { get; set; }
+
+        public int ParticipantsRequested { get; set; }
+
     }
 }
