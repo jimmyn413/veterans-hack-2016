@@ -15,24 +15,31 @@ namespace Sabio.Web.Controllers.Api
     public class InviteApiController : ApiController
     {
         [Route(), HttpPost]
-        public async Task<HttpResponseMessage> SendInvite()
+        public async Task<HttpResponseMessage> SendInvite(InviteEmail model)
         {
             //if (!ModelState.IsValid && request != null)
             //{
             //    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             //}
+
             try
             {
-                //this request is triggered by the /signUp page
-                await SignUpService.SendInvitation();
-                SuccessResponse sr = new SuccessResponse();
-                return Request.CreateResponse(HttpStatusCode.OK, sr);
+                foreach (string i in model.Emails)
+                {
+                    //this request is triggered by the /signUp page
+                    await SignUpService.SendInvitation(i);
+                    SuccessResponse sr = new SuccessResponse();
+                   
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, "");
             }
             catch (Exception ex)
             {
                 ErrorResponse response = new ErrorResponse(ex.Message);
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, response);
             }
+           // return null;
         }
         //[Route(), HttpPut]
         //public HttpResponseMessage ConfirmUserEmail(string userId)
