@@ -236,8 +236,8 @@
 
         stateside.page.handlers.handleSubmitForm = function (evt) {
             evt.preventDefault();
-            var data = { emails: $('#inviteEmail').val().split(',') };         
-            stateside.services.invite.send(data, stateside.page.inviteSuccess, stateside.page.inviteSuccess)
+            //var data = { emails: $('#inviteEmail').val().split(',') };         
+            stateside.services.invite.send(stateside.page.inviteSuccess, stateside.page.inviteSuccess)
 
         }
         stateside.page.inviteSuccess = function () {

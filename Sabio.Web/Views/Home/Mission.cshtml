@@ -163,17 +163,22 @@
 
         function attendeeSuccess(){
             console.log("attendee success");
-            window.location.href = '/home/mapApproved'
         }
         function attendeeError(){
             console.log("attendee error");
         }
-
+        function notifySuccess(){
+            console.log("notify success");
+            window.location.href = '/home/mapApproved'
+        }
+        function notifyError(){
+            console.log("notify error");
+        }
         var enlistToMission = function () {
             event.preventDefault();
             console.log("enlistToMission clicked");
             stateside.services.events.insertAttendee(MISSION_INFO.item, attendeeSuccess, attendeeError);
-            
+            stateside.services.events.sendNotification(notifySuccess, notifyError);
 
         }
 
