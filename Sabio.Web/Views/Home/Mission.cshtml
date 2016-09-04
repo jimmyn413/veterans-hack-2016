@@ -96,7 +96,7 @@
             
             
 
-            $('#enlist-btn').on("click touch", enlistToMission);
+            $('#enlist-btn').on("click", enlistToMission);
 
         });
         
@@ -126,9 +126,16 @@
 
         //}
 
-        var enlistToMission = function () {
+        function attendeeSuccess(){
+            console.log("attendee success");
+        }
+        function attendeeError(){
+            console.log("attendee error");
+        }
 
-            window.location.href = '/home/mapApproved'
+        var enlistToMission = function () {
+            stateside.services.events.insertAttendee(MISSION_INFO.item, attendeeSuccess, attendeeError);
+            //window.location.href = '/home/mapApproved'
 
         }
     </script>
