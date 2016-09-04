@@ -289,6 +289,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Requests\AttendeeRequest.cs" />
     <Compile Include="Models\Requests\EmailSendRequest.cs" />
     <Compile Include="Models\Requests\IdsRequest.cs" />
     <Compile Include="Models\Requests\InviteEmail.cs" />
@@ -464,6 +465,7 @@
     <Content Include="Content\admin.assets\images\markers\bar-08.png" />
     <Content Include="Content\admin.assets\images\markers\bar-09.png" />
     <Content Include="Content\admin.assets\images\markers\bar-10.png" />
+    <Content Include="Content\admin.assets\images\markers\blue.png" />
     <Content Include="Content\admin.assets\images\markers\building-01.png" />
     <Content Include="Content\admin.assets\images\markers\building-02.png" />
     <Content Include="Content\admin.assets\images\markers\building-03.png" />
@@ -494,6 +496,7 @@
     <Content Include="Content\admin.assets\images\markers\gas-08.png" />
     <Content Include="Content\admin.assets\images\markers\gas-09.png" />
     <Content Include="Content\admin.assets\images\markers\gas-10.png" />
+    <Content Include="Content\admin.assets\images\markers\green.png" />
     <Content Include="Content\admin.assets\images\markers\house-01.png" />
     <Content Include="Content\admin.assets\images\markers\house-02.png" />
     <Content Include="Content\admin.assets\images\markers\house-03.png" />
@@ -505,6 +508,7 @@
     <Content Include="Content\admin.assets\images\markers\house-09.png" />
     <Content Include="Content\admin.assets\images\markers\house-10.png" />
     <Content Include="Content\admin.assets\images\markers\marker.png" />
+    <Content Include="Content\admin.assets\images\markers\red.png" />
     <Content Include="Content\admin.assets\images\markers\restaurant-01.png" />
     <Content Include="Content\admin.assets\images\markers\restaurant-02.png" />
     <Content Include="Content\admin.assets\images\markers\restaurant-03.png" />
@@ -535,6 +539,7 @@
     <Content Include="Content\admin.assets\images\markers\user-08.png" />
     <Content Include="Content\admin.assets\images\markers\user-09.png" />
     <Content Include="Content\admin.assets\images\markers\user-10.png" />
+    <Content Include="Content\admin.assets\images\markers\yellow.png" />
     <Content Include="Content\admin.assets\images\people\110\child-1.jpg" />
     <Content Include="Content\admin.assets\images\people\110\guy-1.jpg" />
     <Content Include="Content\admin.assets\images\people\110\guy-2.jpg" />
@@ -585,6 +590,7 @@
     <Content Include="Content\admin.assets\images\place3-wide.jpg" />
     <Content Include="Content\admin.assets\images\place3.jpg" />
     <Content Include="Content\admin.assets\images\profile-cover.jpg" />
+    <Content Include="Content\admin.assets\images\grade.png" />
     <Content Include="Content\admin.assets\index.html" />
     <Content Include="Content\admin.assets\js\app\all.js" />
     <Content Include="Content\admin.assets\js\app\app.js" />
@@ -2004,6 +2010,8 @@
     <Content Include="Views\Home\Messages.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Home\MapApproved.cshtml" />
+    <Content Include="Views\Home\MapPending.cshtml" />
+    <Content Include="Views\Home\MapSingleMission.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

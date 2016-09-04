@@ -22,29 +22,11 @@
     });
 
 
-    var markers = [];
-
-    var geolocations = [{ lat: 33.9808243, lng: -118.3771056 }, { lat: 33.9885749, lng: -118.3869416 }, { lat: 33.9959814, lng: -118.3731943 }, { lat: 33.9621535, lng: -118.4196815 }, { lat: 33.9274214, lng: -118.4067537 }];
-
-    function setIcon(index){
-        if (index === 0) {
-            return  '../../Content/admin.assets/images/markers/blue.png'; 
-        }
-        else return '../../Content/admin.assets/images/markers/red.png'
-    }
-
-    function createMarkers(locations) {
-        var i = 0;
-        locations.forEach(item => {
-            markers[i] = new google.maps.Marker({
-                position: { 'lat': item.lat, 'lng': item.lng },
-                map: map,
-                icon: setIcon(i)
-            });
-            i++;
-        });
-    }
-    createMarkers(geolocations);
+    var marker = new google.maps.Marker({
+        position: { lat: 33.9808243, lng: -118.3771056 },
+        map: map,
+        icon: '../../Content/admin.assets/images/markers/red.png'
+    });
 
     }
 
@@ -67,5 +49,6 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYqzwyH6H-CRc3N3aIyD966wjokFIALUI&callback=initMap">
 </script>
+
 
 
