@@ -26,7 +26,7 @@ namespace Sabio.Web.Services
 
             //embed guid email
             //--replace url
-            string URL = "http://localhost:1552";
+            string URL = "http://veterans-hack-2016.azurewebsites.net";
             html = html.Replace("[[URL-GOES-HERE]]", URL);
             //--replace endpoint
             string endPoint = "/home/mission/";
