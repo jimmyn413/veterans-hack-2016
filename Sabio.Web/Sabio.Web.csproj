@@ -757,6 +757,7 @@
     <Content Include="Content\toastr.min.css" />
     <Content Include="Controllers\SabioReadMe.txt" />
     <Content Include="Domain\SabioReadMe.txt" />
+    <Content Include="EmailTemplates\EnlistConfirmation.html" />
     <Content Include="EmailTemplates\MissionInvitation.html" />
     <Content Include="EmailTemplates\PrettyTemplate.html" />
     <Content Include="EmailTemplates\SignUpEmail.html" />
