@@ -1,12 +1,14 @@
 ﻿@{
-    ViewBag.Title = "MapApproved";
+    ViewBag.Title = "MapPending";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <div id="map"></div>
 <div id="floating-panel">
     @*<input id="address" type="textbox" value="400 Corporate Pointe, Culver City, CA">*@
+
     <input id="create-mission" type="button" value="Create Mission">
+    @*<a href="~/Home/Registration" style="text-decoration: none">Create Mission</a>*@
 </div>
 
 <script>
@@ -33,20 +35,13 @@
         }
     }
 
-    function setIcon(index){
-        if (index === 0) {
-            return  '../../Content/admin.assets/images/markers/blue.png'; 
-        }
-        else return '../../Content/admin.assets/images/markers/red.png'
-    }
-
     function createMarkers(locations) {
         var i = 0;
         locations.forEach(function (item) {
-            var marker = new google.maps.Marker({
+        var marker = new google.maps.Marker({
                 position: { 'lat': item.lat, 'lng': item.lng },
                 map: map,
-                icon: setIcon(i),
+                icon: '../../Content/admin.assets/images/markers/red.png',
                 id: i,
                 clickable: true,
                 url: item.url
@@ -77,5 +72,6 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYqzwyH6H-CRc3N3aIyD966wjokFIALUI&callback=initMap">
 </script>
+
 
 

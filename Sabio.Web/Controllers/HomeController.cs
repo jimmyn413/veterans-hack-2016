@@ -90,5 +90,10 @@ namespace Sabio.Web.Controllers
             return View();
         }
 
+        public ActionResult MapMore()
+        {
+            return View();
+        }
+
     }
 }
