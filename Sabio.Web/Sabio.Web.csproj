@@ -1929,7 +1929,7 @@
     <Content Include="Scripts\stateside.js" />
     <Content Include="Scripts\stateside.services.signUp.js" />
     <Content Include="Scripts\_references.js" />
-    <None Include="Views\Home\Map.cshtml" />
+    <None Include="Views\Home\MapApproved.cshtml" />
     <Content Include="Views\SabioReadMe.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
