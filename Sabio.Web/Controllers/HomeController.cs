@@ -59,6 +59,12 @@ namespace Sabio.Web.Controllers
             return View();
         }
 
+        //[Route("mapsinglemission"), HttpGet]
+        public ActionResult MapSingleMission()
+        {
+            return View();
+        }
+
 
         public ActionResult MissionCreate()
         {

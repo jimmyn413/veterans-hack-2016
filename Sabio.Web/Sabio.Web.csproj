@@ -292,6 +292,7 @@
     <Compile Include="Models\Requests\AttendeeRequest.cs" />
     <Compile Include="Models\Requests\EmailSendRequest.cs" />
     <Compile Include="Models\Requests\IdsRequest.cs" />
+    <Compile Include="Models\Requests\InviteEmail.cs" />
     <Compile Include="Models\Requests\ItemsRequest.cs" />
     <Compile Include="Models\Requests\LoginRequest.cs" />
     <Compile Include="Models\Requests\MessageRequest.cs" />
@@ -2009,6 +2010,8 @@
     <Content Include="Views\Home\Messages.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Home\MapApproved.cshtml" />
+    <Content Include="Views\Home\MapPending.cshtml" />
+    <Content Include="Views\Home\MapSingleMission.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
