@@ -758,6 +758,7 @@
     <Content Include="Controllers\SabioReadMe.txt" />
     <Content Include="Domain\SabioReadMe.txt" />
     <Content Include="EmailTemplates\MissionInvitation.html" />
+    <Content Include="EmailTemplates\PrettyTemplate.html" />
     <Content Include="EmailTemplates\SignUpEmail.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
