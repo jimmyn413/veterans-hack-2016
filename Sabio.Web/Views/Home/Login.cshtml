@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     //ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_LayoutAdminSimple.cshtml";
 }
@@ -59,33 +58,33 @@
         <script type="text/javascript">
 
 
-        stateside.page.startUp = function () {
+            stateside.page.startUp = function () {
 
-            $('#loginButton').on('click', stateside.page.handlers.login);
+                $('#loginButton').on('click', stateside.page.handlers.login);
 
-        }
+            }
 
-        stateside.page.handlers.login = function () {
-            event.preventDefault();
-            var data = {};
-            data.Email = $('#username3').val();
-            data.Password = $('#inputPassword3').val();
-            console.log('data: ', data);
-            stateside.services.login.logmein(data, onSuccess, onError);
+            stateside.page.handlers.login = function () {
+                event.preventDefault();
+                var data = {};
+                data.Email = $('#username3').val();
+                data.Password = $('#inputPassword3').val();
+                console.log('data: ', data);
+                stateside.services.login.logmein(data, onSuccess, onError);
 
-        }
+            }
 
 
 
-        var onSuccess = function () {
-            console.log('success');
+            var onSuccess = function () {
+                console.log('success');
 
-            window.location.href = "/Home/map";
-        }
+                window.location.href = "/Home/map";
+            }
 
-        var onError = function () {
-            console.log('error');
-        }
+            var onError = function () {
+                console.log('error');
+            }
 
 
         </script>

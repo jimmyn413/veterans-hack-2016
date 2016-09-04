@@ -78,17 +78,7 @@ namespace Sabio.Web.Controllers
 
             return View(model);
         }
-
-
-
-
-
-
-
-
-
-
-
+        
         public ActionResult Messages()
         {
             return View();
