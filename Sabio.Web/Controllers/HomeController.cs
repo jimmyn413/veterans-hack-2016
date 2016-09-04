@@ -48,7 +48,7 @@ namespace Sabio.Web.Controllers
         }
 
         //[Route("map"), HttpGet]
-        public ActionResult map()
+        public ActionResult Map()
         {
             return View();
         }
