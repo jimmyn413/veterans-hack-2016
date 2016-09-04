@@ -28,10 +28,10 @@ namespace Sabio.Web.Controllers.Api
             }
 
             ApplicationUser userCheck = UserService.GetUser(model.Email);
-            if (userCheck.EmailConfirmed == false)
+            /*if (userCheck.EmailConfirmed == false)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, "Please verify email address");
-            }
+            }*/
 
             bool SigninSuccess = UserService.Signin(model.Email, model.Password);
 

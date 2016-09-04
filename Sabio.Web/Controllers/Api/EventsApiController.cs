@@ -88,8 +88,7 @@ namespace Sabio.Web.Controllers.Api
             string currentUserId = UserService.GetCurrentUserId();
 
             EventService.AddEventAttendee(id, currentUserId, 2);
-
-
+            
             ItemResponse<int> response = new ItemResponse<int>();
 
             response.Item = id;
