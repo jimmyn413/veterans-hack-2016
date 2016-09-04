@@ -584,7 +584,7 @@
     <Content Include="Content\admin.assets\images\place3-wide.jpg" />
     <Content Include="Content\admin.assets\images\place3.jpg" />
     <Content Include="Content\admin.assets\images\profile-cover.jpg" />
-    <Content Include="Content\admin.assets\images\test.png" />
+    <Content Include="Content\admin.assets\images\grade.png" />
     <Content Include="Content\admin.assets\index.html" />
     <Content Include="Content\admin.assets\js\app\all.js" />
     <Content Include="Content\admin.assets\js\app\app.js" />
