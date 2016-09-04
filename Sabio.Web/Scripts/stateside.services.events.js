@@ -1,20 +1,20 @@
 ﻿stateside.services.events = stateside.services.events || {};
 
-//stateside.services.eventsInfo = function (id, onSuccess, onError) {
-//    var url = "/api/events/" + id;
+stateside.services.eventsInfo = function (id, onSuccess, onError) {
+    var url = "/api/events/" + id;
 
-//    var settings = {
-//        cache: false
-//        , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
-//        , dataType: "json"
-//        , success: onSuccess
-//        , error: onError
-//        , type: "GET"
-//    };
-//    $.ajax(url, settings);
+    var settings = {
+        cache: false
+        , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
+        , dataType: "json"
+        , success: onSuccess
+        , error: onError
+        , type: "GET"
+    };
+    $.ajax(url, settings);
 
 
-//}
+}
 
 stateside.services.events.get = function (onSuccess, onError) {
     var url = "/api/events";
@@ -48,3 +48,20 @@ stateside.services.events.myEvents = function (onSuccess, onError) {
 
 
 }
+
+
+stateside.services.events.insertNewEvent = function (payload, onSuccess, onError) {
+
+    var url = "/api/Events";
+    var settings = {
+        cache: false
+    , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
+    , dataType: "json"
+    , data: payload
+    , success: onSuccess
+    , error: onError
+    , type: "Post"
+    };
+
+    $.ajax(url, settings);
+};
