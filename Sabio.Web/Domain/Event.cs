@@ -29,8 +29,6 @@ namespace Sabio.Web.Domain
 
         public string Description { get; set; }
 
-        public int MediaId { get; set; }
-
         public int CountYes { get; set; }
 
         public int CountNo { get; set; }
@@ -47,7 +45,7 @@ namespace Sabio.Web.Domain
 
         //public List<Tags> Tags { get; set; }
 
-        public UserProfile Organizer { get; set; }
+        public string Organizer { get; set; }
 
         public Media Media { get; set; }
 
