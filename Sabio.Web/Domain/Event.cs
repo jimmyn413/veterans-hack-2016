@@ -9,8 +9,18 @@ namespace Sabio.Web.Domain
     {
         public int Id { get; set; }
 
+        //- 1 = Mission Proposed
+        //- 2 = Mission Accepted
+        //- 3 = Mission in Progress
+        //- 4 = Mission Success
+        //- 5 = Mission Failed
+        //- 6 - Mission Impossible (YOLO!)
+        public int EventStatus { get; set; }
+
         public string UserId { get; set; }
 
+        //- 1 = Veteran
+        //- 2 = Civilian 
         public int EventType { get; set; }
 
         public bool IsPublic { get; set; }
@@ -41,7 +51,17 @@ namespace Sabio.Web.Domain
 
         public Media Media { get; set; }
 
-        public Location Location { get; set; }
+        public string Address { get; set; }
+
+        public string City { get; set; }
+
+        public decimal Latitude { get; set; }
+
+        public decimal Longitude { get; set; }
+
+        public string State { get; set; }
+
+        public string ZipCode { get; set; }
 
         public List<UserProfile> Attendees { get; set; }
 
