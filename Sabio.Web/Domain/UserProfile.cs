@@ -25,5 +25,9 @@ namespace Sabio.Web.Domain
         public string Branch { get; set; }
 
         public int MissionsCompleted { get; set; }
+
+        public int EventId { get; set; }
+
+        public int EventStatus { get; set; }
     }
 }
