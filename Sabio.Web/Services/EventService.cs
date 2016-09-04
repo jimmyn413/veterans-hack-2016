@@ -95,7 +95,7 @@ namespace Sabio.Web.Services
             newEvent = new Event();
 
             eventOrganizer.LastName = "Doe";
-            eventOrganizer.Firstname = "Steve";
+            eventOrganizer.FirstName = "Steve";
             eventOrganizer.UserId = "99887766";
 
             eventLocation = new Location();
@@ -129,7 +129,7 @@ namespace Sabio.Web.Services
             newEvent = new Event();
 
             eventOrganizer.LastName = "Newman";
-            eventOrganizer.Firstname = "Ima";
+            eventOrganizer.FirstName = "Ima";
             eventOrganizer.UserId = "876876";
 
             eventLocation = new Location();
@@ -163,7 +163,7 @@ namespace Sabio.Web.Services
             newEvent = new Event();
 
             eventOrganizer.LastName = "Beltran";
-            eventOrganizer.Firstname = "David";
+            eventOrganizer.FirstName = "David";
             eventOrganizer.UserId = "9753124";
 
             eventLocation = new Location();
@@ -197,7 +197,7 @@ namespace Sabio.Web.Services
             newEvent = new Event();
 
             eventOrganizer.LastName = "Beltran";
-            eventOrganizer.Firstname = "David";
+            eventOrganizer.FirstName = "David";
             eventOrganizer.UserId = "9753124";
 
             eventLocation = new Location();
@@ -232,7 +232,7 @@ namespace Sabio.Web.Services
             newEvent = new Event();
 
             eventOrganizer.LastName = "Smite";
-            eventOrganizer.Firstname = "Will";
+            eventOrganizer.FirstName = "Will";
             eventOrganizer.UserId = "711771774";
 
 
@@ -326,7 +326,7 @@ namespace Sabio.Web.Services
             List<UserProfile> AttendeeList = new List<UserProfile>();
             UserProfile eventOrganizer = new UserProfile();
             eventOrganizer.LastName = "Smite";
-            eventOrganizer.Firstname = "Will";
+            eventOrganizer.FirstName = "Will";
             eventOrganizer.UserId = "711771774";
             Location eventLocation = new Location();
 
