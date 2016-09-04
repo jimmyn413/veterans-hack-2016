@@ -143,7 +143,7 @@ namespace Sabio.Web.Services
             List<UserProfile> AttendeeList = new List<UserProfile>();
             UserProfile eventOrganizer = new UserProfile();
             eventOrganizer.LastName = "Smith";
-            eventOrganizer.Firstname = "Joe";
+            eventOrganizer.FirstName = "Joe";
             eventOrganizer.UserId = "54322352";
 
             Location eventLocation = new Location();
@@ -171,6 +171,7 @@ namespace Sabio.Web.Services
             newEvent.Organizer = eventOrganizer;
             newEvent.Start = Convert.ToDateTime("2016-09-27T19:00:00");
             newEvent.Title = "Refurbish a local school's playground";
+
 
            
 
