@@ -3,14 +3,18 @@
     Layout = "~/Views/Shared/_LayoutAdminSimple.cshtml";
 }
     <style>
-        #map {
-            height:522px;
-        }
-        #floating-panel {
-            position: fixed;
-            bottom: 10px;
-            left:10px
-        }
+    #map {
+        height:578px;
+    }
+    #floating-panel {
+        position: fixed;
+        bottom: 10px;
+        left:10px
+    }
+    .gm-style {
+        width:100% !important;
+        height: 100% !important;
+    }
     </style>
     <div id="map"></div>
     <div id="floating-panel">
@@ -24,7 +28,7 @@
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 12,
-          center: {lat: 33.99, lng: -118.38}
+          center: { lat: 33.955382, lng: -118.411669}
         });
         var geocoder = new google.maps.Geocoder();
 
@@ -60,13 +64,27 @@
         //   content: contentString
         // });
         //
-        var marker = new google.maps.Marker({
-          position: {lat: 33.99, lng: -118.38},
-          map: map,
-          title: 'Uluru (Ayers Rock)'
-        });
+        //var marker = new google.maps.Marker({
+        //  position: {lat: 33.99, lng: -118.38},
+        //  map: map,
+        //  title: 'Uluru (Ayers Rock)'
+        //});
         
-        //infowindow.open(map, marker);
+        var markers = [];
+
+        var geolocations = [{ lat: 33.9808243, lng: -118.3771056 }, { lat: 33.9885749, lng: -118.3869416 }, { lat: 33.9959814, lng: -118.3731943 }, { lat: 33.9621535, lng: -118.4196815 }, { lat: 33.9274214, lng: -118.4067537 }];
+
+        function createMarkers(locations) {
+            var i = 0;
+            locations.forEach(item => {
+                markers[i] = new google.maps.Marker({
+                    position: { 'lat': item.lat, 'lng': item.lng },
+                    map: map
+                })
+                i++;
+            });
+        }
+        createMarkers(geolocations);
 
 
 

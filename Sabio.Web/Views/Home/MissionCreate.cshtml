@@ -291,11 +291,12 @@
                   
                             <h5>Tagging Support</h5>
                             <div class="form-group">
-                                <input type="hidden" data-toggle="select2-tags" data-tags="red,green,blue,brown" style="width: 100%;" value="brown,red,green" />
+                                <input type="hidden" data-toggle="select2-tags" data-tags="Gema,Jimmy,Varr,Kayla" style="width: 100%;" 
+                                       value="gema123@mailinator.com, Jimmy123@mailinator.com, varr123@mailinator.com, kayla123@mailinator.com" />
                             </div>
 
                         <div class="panel-body buttons-spacing-vertical" style="float:right">
-                            <button class="btn green-btn"><i class="fa fa-check-circle"></i> Submit</button>
+                            <button class="btn green-btn" id="submitButton"><i class="fa fa-check-circle"></i> Submit</button>
                             <button class="btn red-btn"><i class="fa fa-times"></i> Cancel</button>
 
                         </div>
@@ -337,3 +338,28 @@
 
 
 </body>
+
+@section Scripts{
+    <script src="~/Scripts/stateside.js"></script>
+    <script src="~/Scripts/stateside.services.invite.js"></script>
+    <script type="text/javascript">
+        stateside.page.startUp = function () {
+        console.log("jQuery success");
+        $('#submitButton').on('click', stateside.page.handlers.handleSubmitForm);
+        }
+
+        stateside.page.handlers.handleSubmitForm = function (evt) {
+            evt.preventDefault();
+            var data = "";
+            stateside.services.invite.send(data, stateside.page.inviteSuccess, stateside.page.inviteSuccess)
+
+        }
+        stateside.page.inviteSuccess = function () {
+            console.log("register success");
+        }
+        stateside.page.inviteError = function () {
+            console.log("register error");
+        }
+    </script>
+    
+}

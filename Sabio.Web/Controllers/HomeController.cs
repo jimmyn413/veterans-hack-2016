@@ -66,5 +66,27 @@ namespace Sabio.Web.Controllers
 
             return View(model);
         }
+
+
+
+
+
+
+
+
+
+
+
+        public ActionResult Messages()
+        {
+            return View();
+        }
+
+
+        public ActionResult Test()
+        {
+            return View();
+        }
+
     }
 }

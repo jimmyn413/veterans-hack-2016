@@ -258,6 +258,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\BaseApiController.cs" />
     <Compile Include="Controllers\Api\EventsApiController.cs" />
+    <Compile Include="Controllers\Api\InviteApiController.cs" />
     <Compile Include="Controllers\Api\Login.cs" />
     <Compile Include="Controllers\Api\MessageApiController.cs" />
     <Compile Include="Controllers\Api\SabioApiController.cs" />
@@ -745,6 +746,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Controllers\SabioReadMe.txt" />
     <Content Include="Domain\SabioReadMe.txt" />
+    <Content Include="EmailTemplates\MissionInvitation.html" />
     <Content Include="EmailTemplates\SignUpEmail.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -1914,6 +1916,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\stateside.services.events.js" />
+    <Content Include="Scripts\stateside.services.invite.js" />
     <Content Include="Scripts\stateside.services.login.js" />
     <Content Include="Scripts\stateside.services.messages.js" />
     <Content Include="Scripts\sabio\core\controllers\base.controller.js" />
@@ -1997,6 +2000,8 @@
     <Content Include="Views\Home\Landing.cshtml" />
     <Content Include="Views\Home\MissionCreate.cshtml" />
     <Content Include="Views\Home\Mission.cshtml" />
+    <Content Include="Views\Home\Messages.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
