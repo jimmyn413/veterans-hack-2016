@@ -68,7 +68,7 @@ stateside.services.events.insertNewEvent = function (payload, onSuccess, onError
 
 stateside.services.events.insertAttendee = function (id, onSuccess, onError) {
 
-    var url = "/api/events/join" + id;
+    var url = "/api/events/join/" + id;
     var settings = {
         cache: false
     //, contentType: "application/json; charset=UTF-8"
