@@ -174,7 +174,7 @@
         function notifyError(){
             console.log("notify error");
         }
-        var enlistToMission = function () {
+        var enlistToMission = function (event) {
             event.preventDefault();
             console.log("enlistToMission clicked");
             stateside.services.events.insertAttendee(MISSION_INFO.item, attendeeSuccess, attendeeError);
