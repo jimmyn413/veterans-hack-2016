@@ -7,6 +7,7 @@ using System.Web.Http;
 using Sabio.Web.Services;
 using Sabio.Web.Domain;
 using Sabio.Web.Models.Responses;
+using Sabio.Web.Models.Requests;
 
 namespace Sabio.Web.Controllers.Api
 {
@@ -57,5 +58,27 @@ namespace Sabio.Web.Controllers.Api
 
 
 
+
+        [Route, HttpPost]
+        public HttpResponseMessage Post(EventRequest model)
+        {
+
+
+            model.Organizer = UserService.GetCurrentUserId();
+
+            //post new event basic info
+            int eventId = EventService.Post(model);
+
+            EventService.AddEventAttendee(eventId, model.Organizer, 2);
+
+            ItemResponse<int> response = new ItemResponse<int>();
+
+            response.Item = eventId;
+
+
+
+
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
     }
 }

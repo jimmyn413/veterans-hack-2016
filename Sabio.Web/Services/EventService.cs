@@ -182,10 +182,22 @@ namespace Sabio.Web.Services
         }
 
 
-        public static void AddEventAttendee(int EventId, string UserId)
+        public static void AddEventAttendee(int EventId, string UserId, int Status)
         {
-            //- Status should default to Pending (1)
-        }
+
+            DataProvider.ExecuteNonQuery(GetConnection, "dbo.Attendees_Insert"                        //Code from Jimmy and Nancy on returning an ID - direct copy and paste
+             , inputParamMapper: delegate (SqlParameterCollection paramCollection)
+             {
+                 paramCollection.AddWithValue("@UserId", UserId);
+                 paramCollection.AddWithValue("@EventId", EventId);
+                 paramCollection.AddWithValue("@Status", Status);
+
+             }, returnParameters: delegate (SqlParameterCollection param)
+             {
+
+             }
+             );
+         }
 
         //- Attendee Status
         //- 1 = Pending
@@ -196,6 +208,52 @@ namespace Sabio.Web.Services
 
         }
 
+
+        public static int Post(EventRequest model)
+        {
+            int outputId = 0;
+
+            DataProvider.ExecuteNonQuery(GetConnection, "dbo.Event_Insert"                        //Code from Jimmy and Nancy on returning an ID - direct copy and paste
+             , inputParamMapper: delegate (SqlParameterCollection paramCollection)
+             {
+                 paramCollection.AddWithValue("@Title", model.Title);
+                 paramCollection.AddWithValue("@Description", model.Description);
+                 paramCollection.AddWithValue("@EventStatus", model.EventStatus);
+                 paramCollection.AddWithValue("@EventType", model.EventType);
+                 paramCollection.AddWithValue("@CountMaybe", model.CountMaybe);
+                 paramCollection.AddWithValue("@CountNo", model.CountNo);
+                 paramCollection.AddWithValue("@CountYes", model.CountYes);
+                 paramCollection.AddWithValue("@ExternalEventId", model.ExternalEventId);
+                 paramCollection.AddWithValue("@IsPublic", model.IsPublic);
+                 paramCollection.AddWithValue("@Address", model.Address);
+                 paramCollection.AddWithValue("@City", model.City);
+                 paramCollection.AddWithValue("@State", model.State);
+                 paramCollection.AddWithValue("@ZipCode", model.ZipCode);
+                 paramCollection.AddWithValue("@End", model.End);
+                 paramCollection.AddWithValue("@Start", model.Start);
+                 paramCollection.AddWithValue("@Organizer", model.Organizer);
+                 paramCollection.AddWithValue("@BeneficiaryString", model.BeneficiaryString);
+                 paramCollection.AddWithValue("@BeneficiaryId", model.BeneficiaryId);
+                 paramCollection.AddWithValue("@ParticipantsRequested", model.ParticipantsRequested);
+                 paramCollection.AddWithValue("@Latitude", model.Latitude);
+                 paramCollection.AddWithValue("@Longitude", model.Longitude);
+
+
+
+                 SqlParameter p = new SqlParameter("@Id", System.Data.SqlDbType.Int);
+                 p.Direction = System.Data.ParameterDirection.Output;
+
+                 paramCollection.Add(p);
+
+               
+             }, returnParameters: delegate (SqlParameterCollection param)
+             {
+                 int.TryParse(param["@Id"].Value.ToString(), out outputId);
+             }
+             );
+
+            return outputId;
+        }
 
     }
 
