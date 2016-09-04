@@ -213,18 +213,18 @@ namespace Sabio.Web.Services
         {
             int outputId = 0;
 
-            DataProvider.ExecuteNonQuery(GetConnection, "dbo.Event_Insert"                        //Code from Jimmy and Nancy on returning an ID - direct copy and paste
+            DataProvider.ExecuteNonQuery(GetConnection, "dbo.Event_Insert" 
              , inputParamMapper: delegate (SqlParameterCollection paramCollection)
              {
                  paramCollection.AddWithValue("@Title", model.Title);
                  paramCollection.AddWithValue("@Description", model.Description);
-                 paramCollection.AddWithValue("@EventStatus", model.EventStatus);
-                 paramCollection.AddWithValue("@EventType", model.EventType);
-                 paramCollection.AddWithValue("@CountMaybe", model.CountMaybe);
-                 paramCollection.AddWithValue("@CountNo", model.CountNo);
-                 paramCollection.AddWithValue("@CountYes", model.CountYes);
-                 paramCollection.AddWithValue("@ExternalEventId", model.ExternalEventId);
-                 paramCollection.AddWithValue("@IsPublic", model.IsPublic);
+                 paramCollection.AddWithValue("@EventStatus", 1);
+                 paramCollection.AddWithValue("@EventType", 1);
+                 paramCollection.AddWithValue("@CountMaybe", 3);
+                 paramCollection.AddWithValue("@CountNo", 1);
+                 paramCollection.AddWithValue("@CountYes", 8);
+                 paramCollection.AddWithValue("@ExternalEventId", 253);
+                 paramCollection.AddWithValue("@IsPublic", 1);
                  paramCollection.AddWithValue("@Address", model.Address);
                  paramCollection.AddWithValue("@City", model.City);
                  paramCollection.AddWithValue("@State", model.State);
@@ -233,8 +233,8 @@ namespace Sabio.Web.Services
                  paramCollection.AddWithValue("@Start", model.Start);
                  paramCollection.AddWithValue("@Organizer", model.Organizer);
                  paramCollection.AddWithValue("@BeneficiaryString", model.BeneficiaryString);
-                 paramCollection.AddWithValue("@BeneficiaryId", model.BeneficiaryId);
-                 paramCollection.AddWithValue("@ParticipantsRequested", model.ParticipantsRequested);
+                 paramCollection.AddWithValue("@BeneficiaryId", "Beneficiary");
+                 paramCollection.AddWithValue("@ParticipantsRequested", 3);
                  paramCollection.AddWithValue("@Latitude", model.Latitude);
                  paramCollection.AddWithValue("@Longitude", model.Longitude);
 
