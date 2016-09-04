@@ -18,6 +18,16 @@ namespace Sabio.Web.Services
         {
             Event ThisEvent = new Event();
 
+            List<Event> AllEvents = GetAllEvents();
+
+            foreach(Event evt in AllEvents)
+            {
+                if (evt.Id == Id)
+                {
+                    return evt;
+                }
+            }
+
             return ThisEvent;
         }
 
@@ -142,10 +152,25 @@ namespace Sabio.Web.Services
 
         public static List<Event> GetUserEvents(string UserId)
         {
-            List<Event> EventList = new List<Event>();
+           
+            List<Event> MyEvents = new List<Event>();
+
+            List<Event> AllEvents = GetAllEvents();
+
+            foreach (Event evt in AllEvents)
+            {
+                foreach(UserProfile usr in evt.Attendees)
+                {
+                    if (usr.UserId == UserId)
+                    {
+                        MyEvents.Add(evt);
+                        continue;
+                    }
+                }
+            }
 
 
-            return EventList;
+            return MyEvents;
         }
 
 
