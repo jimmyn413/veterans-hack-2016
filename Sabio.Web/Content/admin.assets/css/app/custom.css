@@ -40,6 +40,10 @@
   padding-right: 0 !important;
 }
 
+.margin-right {
+    margin-right: 10px;
+}
+
 
 #hamburger {
    /*background: #437353 !important;*/

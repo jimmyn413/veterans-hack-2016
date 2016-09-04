@@ -348,6 +348,7 @@
     <Content Include="Content\admin.assets\css\app\maps.css" />
     <Content Include="Content\admin.assets\css\app\media.css" />
     <Content Include="Content\admin.assets\css\app\navbar.css" />
+    <Content Include="Content\admin.assets\css\app\rotating-cards.css" />
     <Content Include="Content\admin.assets\css\app\sidebar-skins.css" />
     <Content Include="Content\admin.assets\css\app\sidebar.css" />
     <Content Include="Content\admin.assets\css\app\timeline.css" />
