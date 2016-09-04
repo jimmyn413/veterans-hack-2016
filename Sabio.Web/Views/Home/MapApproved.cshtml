@@ -17,8 +17,9 @@
     });
     var geocoder = new google.maps.Geocoder();
 
-    document.getElementById('create-mission').addEventListener('click', function() {
-        geocodeAddress(geocoder, map);
+    document.getElementById('create-mission').addEventListener('click', function () {
+        window.location.href = "/Home/missioncreate";
+        //geocodeAddress(geocoder, map);
     });
 
 

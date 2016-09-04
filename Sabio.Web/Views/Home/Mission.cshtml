@@ -53,11 +53,11 @@
                                 <td>Team Members</td>
                                 <td>
                                     <div class="col-xs-6 " style="text-align:center">
-                                        <img src="/Content/admin.assets/images/people/50/woman-6.jpg" style="height:50px;width:50px; border-radius: 25px;" />   Anna
+                                        <img src="/Content/admin.assets/images/people/50/woman-6.jpg" style="height:50px;width:50px; border-radius: 25px;" />   Gema
                                     </div>
 
                                     <div class="col-xs-6" style="text-align:center">
-                                        <img src="/Content/admin.assets/images/people/50/guy-2.jpg" style="height:50px;width:50px; border-radius: 25px;" />   Mike
+                                        <img src="/Content/admin.assets/images/people/50/guy-9.jpg" style="height:50px;width:50px; border-radius: 25px;" />   Jim
                                     </div>
                                 </td>
 
@@ -66,7 +66,7 @@
                     </table>
                     <div style="text-align: center">
                         <button id="enlist" role="button" class="enlist-btn btn green-btn btn-large margin-right">Enlist</button>
-                        <a href="/Home/map" role="button" class="btn green-btn btn-large">See More Missions</a>
+                        <a href="/Home/mappending" role="button" class="btn green-btn btn-large">See More Missions</a>
                     </div>
 
                 </div>
@@ -169,7 +169,7 @@
             console.log("attendee error");
         }
 
-        var enlistToMission = function () {
+        var enlistToMission = function (event) {
             event.preventDefault();
             console.log("enlistToMission clicked");
             stateside.services.events.insertAttendee(MISSION_INFO.item, attendeeSuccess, attendeeError);
