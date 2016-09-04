@@ -15,3 +15,4 @@ stateside.services.invite.send = function (data, onSuccess, onError) {
     };
     $.ajax(url, settings);
 }
+

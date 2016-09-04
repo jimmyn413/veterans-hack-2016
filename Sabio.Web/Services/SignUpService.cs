@@ -43,6 +43,24 @@ namespace Sabio.Web.Services
             await NotificationService.SendEmailAsync(confirmEmail);
 
         }
+        public static async Task NotifyEnlist()
+        {
+            //send confirmation email with embed guid
+            //grab html for email body
+            string path = HttpContext.Current.Server.MapPath("~/EmailTemplates/EnlistConfirmation.html");
+            string html = File.ReadAllText(path);
+
+            //embed guid email
+            //--replace url
+
+            EmailSendRequest confirmEmail = new EmailSendRequest();
+            confirmEmail.Destination = "varr.willis@gmail.com";
+            confirmEmail.Subject = "Your friend has invited you for a mission!";
+            confirmEmail.Body = html;
+            confirmEmail.From = "stateside@mailinator.com";
+            await NotificationService.SendEmailAsync(confirmEmail);
+
+        }
         public static async Task SendConfirmationAsync(SignUpAddRequest request)
         {
             //call UserManager.CreateUser() and create new User

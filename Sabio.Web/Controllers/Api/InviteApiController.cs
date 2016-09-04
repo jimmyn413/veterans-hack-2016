@@ -41,20 +41,26 @@ namespace Sabio.Web.Controllers.Api
             }
            // return null;
         }
-        //[Route(), HttpPut]
-        //public HttpResponseMessage ConfirmUserEmail(string userId)
-        //{
-        //    try
-        //    {
-        //        SignUpService.ConfirmEmail(userId);
-        //        var resp = new SuccessResponse();
-        //        return Request.CreateResponse(HttpStatusCode.OK, resp);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        var resp = new ErrorResponse(ex.Message);
-        //        return Request.CreateResponse(HttpStatusCode.InternalServerError, resp);
-        //    }
-        //}
+        [Route(), HttpPost]
+        public async Task<HttpResponseMessage> SendConfirm()
+        {
+            //if (!ModelState.IsValid && request != null)
+            //{
+            //    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            //}
+
+            try
+            {
+                    await SignUpService.NotifyEnlist();
+                    SuccessResponse sr = new SuccessResponse();
+                   return Request.CreateResponse(HttpStatusCode.OK, "");
+            }
+            catch (Exception ex)
+            {
+                ErrorResponse response = new ErrorResponse(ex.Message);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, response);
+            }
+            // return null;
+        }
     }
 }
