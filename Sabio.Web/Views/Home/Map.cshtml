@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Map";
+    Layout = "~/Views/Shared/_LayoutAdminSimple.cshtml";
+}
+    <style>
+    #map {
+        height:578px;
+    }
+    #floating-panel {
+        position: fixed;
+        bottom: 10px;
+        left:10px
+    }
+    .gm-style {
+        width:100% !important;
+        height: 100% !important;
+    }
+    </style>
+    <div id="map"></div>
+    <div id="floating-panel">
+      @*<input id="address" type="textbox" value="400 Corporate Pointe, Culver City, CA">*@
+      <input id="create-mission" type="button" value="Create Mission">
+    </div>
+    
+    <script>
+
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: { lat: 33.955382, lng: -118.411669}
+        });
+        var geocoder = new google.maps.Geocoder();
+
+        document.getElementById('create-mission').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+        });
+
+
+
+
+        // var contentString = '<div id="content">'+
+        //     '<div id="siteNotice">'+
+        //     '</div>'+
+        //     '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+        //     '<div id="bodyContent">'+
+        //     '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+        //     'sandstone rock formation in the southern part of the '+
+        //     'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+        //     'south west of the nearest large town, Alice Springs; 450&#160;km '+
+        //     '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+        //     'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+        //     'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+        //     'Aboriginal people of the area. It has many springs, waterholes, '+
+        //     'rock caves and ancient paintings. Uluru is listed as a World '+
+        //     'Heritage Site.</p>'+
+        //     '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+        //     'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+        //     '(last visited June 22, 2009).</p>'+
+        //     '</div>'+
+        //     '</div>';
+        //
+        // var infowindow = new google.maps.InfoWindow({
+        //   content: contentString
+        // });
+        //
+        //var marker = new google.maps.Marker({
+        //  position: {lat: 33.99, lng: -118.38},
+        //  map: map,
+        //  title: 'Uluru (Ayers Rock)'
+        //});
+        
+        var markers = [];
+
+        var geolocations = [{ lat: 33.9808243, lng: -118.3771056 }, { lat: 33.9885749, lng: -118.3869416 }, { lat: 33.9959814, lng: -118.3731943 }, { lat: 33.9621535, lng: -118.4196815 }, { lat: 33.9274214, lng: -118.4067537 }];
+
+        function createMarkers(locations) {
+            var i = 0;
+            locations.forEach(item => {
+                markers[i] = new google.maps.Marker({
+                    position: { 'lat': item.lat, 'lng': item.lng },
+                    map: map
+                })
+                i++;
+            });
+        }
+        createMarkers(geolocations);
+
+
+
+      }
+
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+            console.log(results)
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYqzwyH6H-CRc3N3aIyD966wjokFIALUI&callback=initMap">
+    </script>
+
+
