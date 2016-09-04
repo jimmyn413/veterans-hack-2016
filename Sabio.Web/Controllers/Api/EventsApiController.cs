@@ -80,5 +80,22 @@ namespace Sabio.Web.Controllers.Api
 
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
+
+        [Route("join/{id:int}"), HttpGet]
+        public HttpResponseMessage EventJoin(int id)
+        {
+
+            string currentUserId = UserService.GetCurrentUserId();
+
+            EventService.AddEventAttendee(id, currentUserId, 2);
+
+
+            ItemResponse<int> response = new ItemResponse<int>();
+
+            response.Item = id;
+
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
     }
 }
