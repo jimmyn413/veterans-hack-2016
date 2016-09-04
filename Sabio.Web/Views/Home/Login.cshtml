@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     //ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_LayoutAdminSimple.cshtml";
 }
@@ -65,7 +64,7 @@
 
         }
 
-        stateside.page.handlers.login = function () {
+            stateside.page.handlers.login = function (event) {
             event.preventDefault();
             var data = {};
             data.Email = $('#username3').val();
@@ -80,12 +79,17 @@
         var onSuccess = function () {
             console.log('success');
 
-            window.location.href = "/Home/map";
+                window.location.href = "/Home/mappending";
+
         }
 
         var onError = function () {
             console.log('error');
         }
+
+
+
+
 
 
         </script>

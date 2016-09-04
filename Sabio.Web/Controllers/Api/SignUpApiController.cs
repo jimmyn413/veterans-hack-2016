@@ -36,6 +36,8 @@ namespace Sabio.Web.Controllers.Api
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, response);
             }
         }
+
+
         [Route(), HttpPut]
         public HttpResponseMessage ConfirmUserEmail(string userId)
         {

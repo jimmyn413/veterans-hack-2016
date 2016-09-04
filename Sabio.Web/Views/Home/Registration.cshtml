@@ -71,6 +71,9 @@
         }
         stateside.page.registerSuccess = function(){
             console.log("register success");
+            setTimeout(function () {
+                window.location.href = "/home/login";
+            }, 4000);
         }
         stateside.page.registerError = function(){
             console.log("register error");
