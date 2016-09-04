@@ -4,61 +4,78 @@
     ViewBag.title = "Missions";
     Layout = "~/Views/Shared/_LayoutAdminSimple.cshtml";
 }
+
+<link href="~/Content/admin.assets/css/app/rotating-cards.css" rel="stylesheet" />
+<link href="~/Content/admin.assets/css/app/custom.css" rel="stylesheet" />
 <div id="loading">
     <img src="~/Content/admin.assets/images/logos_dogtags_e.png" style="width: 76px;">
 </div>
+
 
 <div id="mission-wrapper" class="hide" style="width: 90%; margin: 0px auto;">
 
 </div>
 
 
-
-
 @section Scripts{
     <script id="entry-template" type="text/x-handlebars-template">
         <h1 style="text-align: center;">Mission: {{title}} </h1>
-        <div class="">
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <td>When</td>
-                        <td>{{start}}</td>
-                    </tr>
-                    <tr>
-                        <td>Where</td>
-                        <td id="">
-                            {{address}},{{state}}  <a><i class="fa fa-map-marker" data-toggle="collapse" data-target="#map-hide"></i></a>
-                            <div id="map-hide" style='overflow:hidden;height:400px;width:100%;'>
-                                <div id='gmap_canvas' style='height:400px;width:100%'></div>
+        <div class="card-container manual-flip">
+            <div class="card">
+                <div class="front">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>When</td>
+                                <td>{{date}}</td>
+                            </tr>
+                            <tr>
+                                <td>Where</td>
+                                <td id="">{{location}}</td>
+                                <td onclick="rotateCard(this)">
+                                    <i class="fa fa-search"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Description</td>
+                                <td><p>{{bodyOne}}</p><p id="body-2" class="collapse">{{bodyTwo}}</p><a data-toggle="collapse" data-target="#body-2">Show More</a></td>
+                            </tr>
+                            <tr>
+                                <td>Duration</td>
+                                <td>3 hours</td>
+                            </tr>
+                            <tr>
+                                <td>Helpers</td>
+                                <td>
+                                    <div class="col-xs-6 " style="text-align:center">
+                                        <img src="/Content/admin.assets/images/people/50/woman-6.jpg" style="height:50px;width:50px; border-radius: 25px;" />   Anna
+                                    </div>
 
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Description</td>
-                        <td><p>{{description}}</p></td>
-                    </tr>
-                    
-                    <tr>
-                        <td>Duration</td>
-                        <td>3 hours</td>
-                    </tr>
-                    <tr>
-                        <td>Team Members</td>
-                        <td>
-                            <img src="/Content/admin.assets/images/people/50/woman-6.jpg" style="height:50px;width:50px; border-radius: 25px;" />   Anna
-                            <br />
-                            <br />
-                            <img src="/Content/admin.assets/images/people/50/guy-2.jpg" style="height:50px;width:50px; border-radius: 25px;" />   Mike
-                        </td>
+                                    <div class="col-xs-6" style="text-align:center">
+                                        <img src="/Content/admin.assets/images/people/50/guy-2.jpg" style="height:50px;width:50px; border-radius: 25px;" />   Mike
+                                    </div>
+                                </td>
 
-                    </tr>
-                </tbody>
-            </table>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="text-align: center">
+                        <div id="enlist-btn" role="button" class="enlist-btn btn green-btn btn-large margin-right">Enlist</div>
+                        <a href="/Home/map" role="button" class="btn green-btn btn-large">See More Missions</a>
+                    </div>
+
+                </div>
+                <div class="back">
+                    <div id="map-hide" style='overflow:hidden;height:400px;width:100%;'>
+                        <div id='gmap_canvas' style='height:400px;width:100%'></div>
+                    </div>
+                    <button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)" style="color:black; margin-bottom: -10px;">
+                        <i class="fa fa-reply"></i> Back
+                    </button>
+                </div>
+            </div>
         </div>
-        <div id="enlist-btn" role="button" class="enlist-btn btn green-btn btn-large">Enlist</div>
-        <a href="/Home/mapPending" role="button" class="btn green-btn btn-large">See More Missions</a>
+
     </script>
 
     <script src="~/Scripts/stateside.js"></script>
@@ -98,6 +115,9 @@
 
             $('#enlist-btn').on("click", enlistToMission);
 
+
+            $('[rel="tooltip"]').tooltip();
+
         });
         
      
@@ -124,7 +144,11 @@
         //        bodyOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. ",
         //        bodyTwo: "Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor"};
 
-        //}
+            return { date: "September 12th, 2016",
+                location: "5102 S Garth Ave Ladera Heights, California",
+                title: "My New Mission",
+                bodyOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. ",
+                bodyTwo: "Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor"};
 
         function attendeeSuccess(){
             console.log("attendee success");
@@ -138,6 +162,18 @@
             //window.location.href = '/home/mapApproved'
 
         }
+
+
+
+        function rotateCard(btn) {
+            var $card = $(btn).closest('.card-container');
+            console.log($card);
+            if ($card.hasClass('hover')) {
+                $card.removeClass('hover');
+            } else {
+                $card.addClass('hover');
+            }
+        }
     </script>
 
 
@@ -145,5 +181,4 @@
     <script type='text/javascript'>
         function init_map(){var myOptions = {zoom:12,center:new google.maps.LatLng(33.995977,-118.37100559999999),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(33.995977,-118.37100559999999)});infowindow = new google.maps.InfoWindow({content:'<strong>My Mission</strong><br>5102 S Garth Ave<br>90034 Ladera Heights<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
 }
-
 
