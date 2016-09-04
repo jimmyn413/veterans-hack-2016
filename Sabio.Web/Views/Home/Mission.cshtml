@@ -7,6 +7,11 @@
 
 <link href="~/Content/admin.assets/css/app/rotating-cards.css" rel="stylesheet" />
 <link href="~/Content/admin.assets/css/app/custom.css" rel="stylesheet" />
+
+
+<input type="hidden" value="@Model.Item" id="eventIdFromModel" />
+
+
 <div id="loading">
     <img src="~/Content/admin.assets/images/logos_dogtags_e.png" style="width: 76px;"></img>
 </div>
@@ -80,8 +85,11 @@
 
 
     <script type="text/javascript">
+        var apiRoot = "api/events";
+        var missionId = $("#eventIdFromModel").val();
+
         var MISSION_INFO = @Html.RawJson(Model);
-        ;
+        
 
         $(document).ready(function () {
             console.log(MISSION_INFO);
@@ -131,7 +139,7 @@
         }
 
         var enlistToMission = function () {
-            window.location.href = '/home/mapApproved'
+            window.location.href = '/home/mapApproved';
 
         }
 
