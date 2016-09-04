@@ -7,7 +7,7 @@
 }
 
 <link href="~/Content/admin.assets/css/app/rotating-cards.css" rel="stylesheet" />
-
+<link href="~/Content/admin.assets/css/app/custom.css" rel="stylesheet" />
 <div id="loading">
     <img src="~/Content/admin.assets/images/logos_dogtags_e.png" style="width: 76px;"></img>
 </div>
@@ -17,7 +17,7 @@
     
 </div>
 
-<div class="col-md-4 col-sm-6">
+@*<div class="col-md-4 col-sm-6">
     <div class="card-container manual-flip">
         <div class="card">
             <div class="front">
@@ -85,7 +85,7 @@
             </div> <!-- end back panel -->
         </div> <!-- end card -->
     </div> <!-- end card-container -->
-</div> <!-- end col sm 3 -->
+</div> <!-- end col sm 3 -->*@
 
 
 @section Scripts{
@@ -101,52 +101,79 @@
                             <td>{{date}}</td>
                         </tr>
                         <tr>
+
                             <td>Where</td>
                             <td id="">{{location}}</td>
                             @*<td id=""><i class="fa fa-search"></i></td>*@
                             <td onclick="rotateCard(this)">
-                                
-                                    <i class="fa fa-search"></i>
-                               
+
+                                <i class="fa fa-search"></i>
+
                             </td>
+
+                            @*<td>Where</td>
+                            <td id="">
+                                {{location}}  <a><i class="fa fa-map-marker" data-toggle="collapse" data-target="#map-hide"></i></a>
+                                <div id="map-hide" style='overflow:hidden;height:400px;width:100%;'>
+                                    <div id='gmap_canvas' style='height:400px;width:100%'></div>
+
+                                </div>
+                            </td>*@
                         </tr>
                         <tr>
                             <td>Description</td>
-                            <td><p>{{body}}</p></td>
+                            <td><p>{{bodyOne}}</p><p id="body-2" class="collapse">{{bodyTwo}}</p><a data-toggle="collapse" data-target="#body-2">Show More</a></td>
                         </tr>
-                        <tr>
+                        @*<tr>
                             <td>Start Date</td>
                             <td>{{startDate}}</td>
                         </tr>
                         <tr>
                             <td>End Date</td>
                             <td>{{endDate}}</td>
-                        </tr>
+                        </tr>*@
                         <tr>
                             <td>Duration</td>
                             <td>3 hours</td>
                         </tr>
                         <tr>
                             <td>Helpers</td>
-                            <td>Anna</td>
+                            <td>
+                                <div class="col-xs-6 " style="text-align:center">
+                                    <img src="/Content/admin.assets/images/people/50/woman-6.jpg" style="height:50px;width:50px; border-radius: 25px;" />   Anna
+                                </div>
+                                @*<br />
+                                <br />*@
+                                <div class="col-xs-6" style="text-align:center">
+                                    <img src="/Content/admin.assets/images/people/50/guy-2.jpg" style="height:50px;width:50px; border-radius: 25px;" />   Mike
+                                </div>
+                            </td>
 
                         </tr>
                     </tbody>
                 </table>
+                <div style="text-align: center">
+                    <div id="enlist-btn" role="button" class="enlist-btn btn green-btn btn-large margin-right">Enlist</div>
+                    <a href="/Home/map" role="button" class="btn green-btn btn-large">See More Missions</a>
+                </div>
+                
             </div>
             <div class="back">
                 <p>hello back</p>
+                <div id="map-hide" style='overflow:hidden;height:400px;width:100%;'>
+                    <div id='gmap_canvas' style='height:400px;width:100%'></div>
+
+                </div>
                 <button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)">
                     <i class="fa fa-reply"></i> Back
                 </button>
             </div>
         </div>
     </div>
-    <div id="enlist-btn" role="button" class="enlist-btn btn green-btn btn-large">Enlist</div>
-    <a href="/Home/map" role="button" class="btn green-btn btn-large">See More Missions</a>
+
 </script>
 
-<script type="text/javascript">
+@*<script type="text/javascript">
     var MISSION_INFO = @Html.RawJson(Model);
     ;
 
@@ -208,8 +235,90 @@
         }
     }
 
+</script>*@
+
+
+
+
+
+<script type="text/javascript">
+    var MISSION_INFO = @Html.RawJson(Model);
+    ;
+
+    $(document).ready(function () {
+        console.log(MISSION_INFO);
+        var $loading = $('#loading');
+        var $missionWrapper = $('#mission-wrapper');
+        var source = $("#entry-template").html();
+        var template = Handlebars.compile(source);
+
+
+        var context = getMission();
+
+        var html = template(context);
+
+        $missionWrapper.append(html);
+        $missionWrapper.removeClass('hide');
+        $loading.hide();
+
+        $('#enlist-btn').on("click touch", enlistToMission);
+
+
+        $('[rel="tooltip"]').tooltip();
+
+    });
+
+    function getMissionById(missionId, getMission, onError) {
+        var apiLink = apiRoot + "/" + missionId;
+        var settings = {
+            cache: false
+                , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
+                , data: missionId
+                , dataType: "json"
+                , success: onSuccess
+                , error: onError
+                , type: "GET"
+        };
+        this.ajax(apiLink, settings);
+    }
+
+    var getMission = function (data) {
+
+        return { date: "September 12th, 2016",
+            location: "5102 S Garth Ave Ladera Heights, California",
+            title: "My New Mission",
+            bodyOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. ",
+            bodyTwo: "Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor"};
+
+    }
+
+    var enlistToMission = function () {
+        window.location.href = '/home/mapApproved'
+
+    }
+
+
+
+    function rotateCard(btn) {
+        var $card = $(btn).closest('.card-container');
+        console.log($card);
+        if ($card.hasClass('hover')) {
+            $card.removeClass('hover');
+        } else {
+            $card.addClass('hover');
+        }
+    }
 </script>
+
+
+<script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBYqzwyH6H-CRc3N3aIyD966wjokFIALUI'></script>
+<script type='text/javascript'>
+    function init_map(){var myOptions = {zoom:12,center:new google.maps.LatLng(33.995977,-118.37100559999999),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(33.995977,-118.37100559999999)});infowindow = new google.maps.InfoWindow({content:'<strong>My Mission</strong><br>5102 S Garth Ave<br>90034 Ladera Heights<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
 }
+
+
+
+
 
 
 
