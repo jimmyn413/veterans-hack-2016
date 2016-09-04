@@ -6,7 +6,9 @@
 <div id="map"></div>
 <div id="floating-panel">
     @*<input id="address" type="textbox" value="400 Corporate Pointe, Culver City, CA">*@
+    
     <input id="create-mission" type="button" value="Create Mission">
+    @*<a href="~/Home/Registration" style="text-decoration: none">Create Mission</a>*@
 </div>
 
 <script>
@@ -17,8 +19,9 @@
     });
     var geocoder = new google.maps.Geocoder();
 
-    document.getElementById('create-mission').addEventListener('click', function() {
-        geocodeAddress(geocoder, map);
+    document.getElementById('create-mission').addEventListener('click', function () {
+        window.location.href = "/Home/missioncreate";
+        //geocodeAddress(geocoder, map);
     });
 
 
@@ -34,7 +37,7 @@
 
     function createMarkers(locations) {
         var i = 0;
-        locations.forEach(item => {
+        locations.forEach(function (item) {
         var marker = new google.maps.Marker({
                 position: { 'lat': item.lat, 'lng': item.lng },
                 map: map,

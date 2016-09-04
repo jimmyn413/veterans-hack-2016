@@ -2021,6 +2021,7 @@
     <Content Include="Views\Home\MapApproved.cshtml" />
     <Content Include="Views\Home\MapPending.cshtml" />
     <Content Include="Views\Home\MapSingleMission.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdminVar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
