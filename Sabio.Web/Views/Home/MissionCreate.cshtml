@@ -4,7 +4,17 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+<style>
+    .select2-container {
+        width: 100% !important;
+    }
+    .select2-selection {
+        height: 26px;
+    }
+</style>
+
 <body>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 
   <!-- Wrapper required for sidebar transitions -->
   <div class="st-container">
@@ -177,8 +187,13 @@
                   
                             <h5>Invite Team Members</h5>
                             <div class="form-group">
-                                <input id="inviteEmail" type="hidden" data-toggle="select2-tags" data-tags="Gema,Yushi,Varr,Kayla,Jim" style="width: 100%;" 
-                                       value="gramila65@gmail.com, yushigomi@gmail.com, varr.willis@gmail.com, kayla123@mailinator.com, jimmytrannguyen@gmail.com" />
+                                <select class="js-example-basic-multiple" multiple="multiple">
+                                    <option value="kayla123@mailinator.com">Kayla</option>
+                                    <option value="jimmytrannguyen@gmail.com">Jimmy</option>
+                                    <option value="yushigomi@gmail.com">Yushi</option>
+                                    <option value="yushigomi@gmail.com">Gema</option>
+                                    <option value="yushigomi@gmail.com">Hunter</option>
+                                </select>
                             </div>
 
                         <div class="panel-body buttons-spacing-vertical" style="float:right">
@@ -226,12 +241,14 @@
 </body>
 
 @section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="~/Scripts/stateside.js"></script>
     <script src="~/Scripts/stateside.services.invite.js"></script>
     <script type="text/javascript">
         stateside.page.startUp = function () {
         console.log("jQuery success");
         $('#submitButton').on('click', stateside.page.handlers.handleSubmitForm);
+        $(".js-example-basic-multiple").select2();
         }
 
         stateside.page.handlers.handleSubmitForm = function (evt) {
