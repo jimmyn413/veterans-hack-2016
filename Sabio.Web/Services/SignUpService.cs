@@ -82,7 +82,7 @@ namespace Sabio.Web.Services
 
             EmailSendRequest confirmEmail = new EmailSendRequest();
             confirmEmail.Destination = "varr.willis@gmail.com";
-            confirmEmail.Subject = "Your friend has invited you for a mission!";
+            confirmEmail.Subject = "Your friend has joined your mission!";
             confirmEmail.Body = html;
             confirmEmail.From = "stateside@mailinator.com";
             await NotificationService.SendEmailAsync(confirmEmail);
