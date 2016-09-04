@@ -81,7 +81,7 @@ namespace Sabio.Web.Controllers.Api
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
-        [Route("join/{id:int}"), HttpGet]
+        [Route("join/{id:int}"), HttpPost]
         public HttpResponseMessage EventJoin(int id)
         {
 

@@ -65,3 +65,19 @@ stateside.services.events.insertNewEvent = function (payload, onSuccess, onError
 
     $.ajax(url, settings);
 };
+
+stateside.services.events.insertAttendee = function (id, onSuccess, onError) {
+
+    var url = "/api/events/join/" + id;
+    var settings = {
+        cache: false
+    //, contentType: "application/json; charset=UTF-8"
+    , dataType: "json"
+    //, data: JSON.stringify(payload)
+    , success: onSuccess
+    , error: onError
+    , type: "Post"
+    };
+
+    $.ajax(url, settings);
+};
