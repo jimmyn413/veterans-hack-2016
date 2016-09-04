@@ -8,7 +8,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Sabio.Web.Domain;
 
 namespace Sabio.Web.Services
 {
@@ -63,7 +62,7 @@ namespace Sabio.Web.Services
  
                        p = new UserProfile();
                        p.UserId = reader.GetSafeString(startingIndex++);
-                       p.Firstname = reader.GetSafeString(startingIndex++);
+                       p.FirstName = reader.GetSafeString(startingIndex++);
                        p.LastName = reader.GetSafeString(startingIndex++);
                        p.Type = reader.GetSafeString(startingIndex++);
                        p.Avatar = reader.GetSafeString(startingIndex++);
