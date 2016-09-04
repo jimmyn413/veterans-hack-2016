@@ -292,6 +292,7 @@
     <Compile Include="Models\Requests\AttendeeRequest.cs" />
     <Compile Include="Models\Requests\EmailSendRequest.cs" />
     <Compile Include="Models\Requests\IdsRequest.cs" />
+    <Compile Include="Models\Requests\InviteEmail.cs" />
     <Compile Include="Models\Requests\ItemsRequest.cs" />
     <Compile Include="Models\Requests\LoginRequest.cs" />
     <Compile Include="Models\Requests\MessageRequest.cs" />

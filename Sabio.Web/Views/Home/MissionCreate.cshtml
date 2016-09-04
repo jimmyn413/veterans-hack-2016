@@ -291,8 +291,8 @@
                   
                             <h5>Tagging Support</h5>
                             <div class="form-group">
-                                <input type="hidden" data-toggle="select2-tags" data-tags="Gema,Jimmy,Varr,Kayla" style="width: 100%;" 
-                                       value="gema123@mailinator.com, Jimmy123@mailinator.com, varr123@mailinator.com, kayla123@mailinator.com" />
+                                <input id="inviteEmail" type="hidden" data-toggle="select2-tags" data-tags="Gema,Yushi,Varr,Kayla" style="width: 100%;" 
+                                       value="gramila65@gmail.com, yushigomi@gmail.com, varr123@mailinator.com, kayla123@mailinator.com" />
                             </div>
 
                         <div class="panel-body buttons-spacing-vertical" style="float:right">
@@ -350,7 +350,7 @@
 
         stateside.page.handlers.handleSubmitForm = function (evt) {
             evt.preventDefault();
-            var data = "";
+            var data = { emails: $('#inviteEmail').val().split(',') };         
             stateside.services.invite.send(data, stateside.page.inviteSuccess, stateside.page.inviteSuccess)
 
         }
