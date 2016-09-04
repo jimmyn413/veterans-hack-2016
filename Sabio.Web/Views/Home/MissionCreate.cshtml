@@ -350,8 +350,20 @@
 
         stateside.page.handlers.handleSubmitForm = function (evt) {
             evt.preventDefault();
-            var data = { emails: $('#inviteEmail').val().split(',') };         
-            stateside.services.invite.send(data, stateside.page.inviteSuccess, stateside.page.inviteSuccess)
+            var missionObj = {};
+            missionObj.title = $('').val();
+            missionObj.description = $('').val();
+            missionObj.address = $('').val();
+            missionObj.state = $('').val();
+            missionObj.zipCode = $('').val();
+            missionObj.startDate = $('').val();
+            missionObj.endDate = $('').val();
+            missionObj.address = $('').val();
+            missionObj.beneficiaries = $('').val();
+
+            
+
+            createMission(missionObj, onCreateSuccess, errorCreateMission)
 
         }
         stateside.page.inviteSuccess = function () {
@@ -359,6 +371,31 @@
         }
         stateside.page.inviteError = function () {
             console.log("register error");
+        }
+
+        var createMission = function (missionData, onSuccess, onError) {
+            var apiLink = '/api/events/createevent';
+            var settings = {
+                cache: false
+                    , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
+                    , data: missionData
+                    , dataType: "json"
+                    , success: onSuccess
+                    , error: onError
+                    , type: "POST"
+            };
+            $.ajax(apiLink, settings);
+        }
+
+        var onCreateSuccess = function (data) {
+            var data = { emails: $('#inviteEmail').val().split(',') };
+            stateside.services.invite.send(data, stateside.page.inviteSuccess, stateside.page.inviteSuccess)
+
+        }
+
+        var errorCreateMission = function () {
+            console.log('error');
+
         }
     </script>
     
