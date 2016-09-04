@@ -80,27 +80,37 @@ namespace Sabio.Web.Services
 
         public static List<UserProfile> GetAllUsers()
         {
-            List<UserProfile> UserList = new List<UserProfile>();
+            List<UserProfile> UserList = null;
 
-            UserProfile newUser = new UserProfile();
-
-            newUser.UserId = "wthertgh356h456u4645rgt";
-            newUser.FirstName = "Joe";
-            newUser.LastName = "Tanner";
-
-            UserList.Add(newUser);
             
-            newUser.UserId = "5t4g4g43th45tg3ht3g3h";
-            newUser.FirstName = "Jill";
-            newUser.LastName = "Hansen";
+            DataProvider.ExecuteCmd(GetConnection, "dbo.UserProfile_SelectAllUsers"
+               , inputParamMapper: null
+               , map: delegate (IDataReader reader, short set)
+               {
 
-            UserList.Add(newUser);
-            
-            newUser.UserId = "64c45c5h4v57v6v6h676vh";
-            newUser.FirstName = "Billy";
-            newUser.LastName = "Smith";
+                   int startingIndex = 0; //startingOrdinal
 
-            UserList.Add(newUser);
+
+                   UserProfile p = new UserProfile();
+                   p.UserId = reader.GetSafeString(startingIndex++);
+                   p.FirstName = reader.GetSafeString(startingIndex++);
+                   p.LastName = reader.GetSafeString(startingIndex++);
+                   p.Type = reader.GetSafeString(startingIndex++);
+                   p.Avatar = reader.GetSafeString(startingIndex++);
+                   p.Status = reader.GetSafeString(startingIndex++);
+                   p.Rank = reader.GetSafeString(startingIndex++);
+                   p.Branch = reader.GetSafeString(startingIndex++);
+                   p.MissionsCompleted = reader.GetSafeInt32(startingIndex++);
+
+                   if (UserList == null)
+                   {
+                       UserList = new List<UserProfile>();
+                   }
+                   UserList.Add(p);
+               }
+
+               );
+
 
             return UserList;
 
