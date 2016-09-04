@@ -17,6 +17,33 @@ namespace Sabio.Web.Services
 {
     public class SignUpService : BaseService
     {
+        public static async Task SendInvitationHard()
+        {
+            //send confirmation email with embed guid
+            //grab html for email body
+            string path = HttpContext.Current.Server.MapPath("~/EmailTemplates/MissionInvitation.html");
+            string html = File.ReadAllText(path);
+
+            //embed guid email
+            //--replace url
+            string URL = "http://veterans-hack-2016.azurewebsites.net";
+            html = html.Replace("[[URL-GOES-HERE]]", URL);
+            //--replace endpoint
+            string endPoint = "/home/mission/";
+            html = html.Replace("[[END-POINT-GOES-HERE]]", endPoint);
+            //--replace guid
+            string eventId = "8";
+            html = html.Replace("[[xxxxxxxxxxxxxxx]]", eventId);
+            //--call email service
+            EmailSendRequest confirmEmail = new EmailSendRequest();
+            confirmEmail.Destination = "jimmytrannguyen@gmail.com";
+            confirmEmail.Subject = "Your friend has invited you for a mission!";
+            confirmEmail.Body = html;
+            confirmEmail.From = "stateside@mailinator.com";
+            await NotificationService.SendEmailAsync(confirmEmail);
+
+        }
+
         public static async Task SendInvitation(string email)
         {
             //send confirmation email with embed guid
@@ -26,7 +53,7 @@ namespace Sabio.Web.Services
 
             //embed guid email
             //--replace url
-            string URL = "http://localhost:1552";
+            string URL = "http://veterans-hack-2016.azurewebsites.net";
             html = html.Replace("[[URL-GOES-HERE]]", URL);
             //--replace endpoint
             string endPoint = "/home/mission/";
@@ -55,7 +82,7 @@ namespace Sabio.Web.Services
 
             EmailSendRequest confirmEmail = new EmailSendRequest();
             confirmEmail.Destination = "varr.willis@gmail.com";
-            confirmEmail.Subject = "Your friend has invited you for a mission!";
+            confirmEmail.Subject = "Your friend has joined your mission!";
             confirmEmail.Body = html;
             confirmEmail.From = "stateside@mailinator.com";
             await NotificationService.SendEmailAsync(confirmEmail);

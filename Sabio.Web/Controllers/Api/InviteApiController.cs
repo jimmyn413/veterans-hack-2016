@@ -14,35 +14,35 @@ namespace Sabio.Web.Controllers.Api
     [RoutePrefix("api/invite")]
     public class InviteApiController : ApiController
     {
-        [Route(), HttpPost]
-        public async Task<HttpResponseMessage> SendInvite(InviteEmail model)
-        {
-            //if (!ModelState.IsValid && request != null)
-            //{
-            //    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            //}
+        //[Route(), HttpPost]
+        //public async Task<HttpResponseMessage> SendInvite(InviteEmail model)
+        //{
+        //    //if (!ModelState.IsValid && request != null)
+        //    //{
+        //    //    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+        //    //}
 
-            try
-            {
-                foreach (string i in model.Emails)
-                {
-                    //this request is triggered by the /signUp page
-                    await SignUpService.SendInvitation(i);
-                    SuccessResponse sr = new SuccessResponse();
+        //    try
+        //    {
+        //        foreach (string i in model.Emails)
+        //        {
+        //            //this request is triggered by the /signUp page
+        //            await SignUpService.SendInvitation(i);
+        //            SuccessResponse sr = new SuccessResponse();
                    
-                }
+        //        }
 
-                return Request.CreateResponse(HttpStatusCode.OK, "");
-            }
-            catch (Exception ex)
-            {
-                ErrorResponse response = new ErrorResponse(ex.Message);
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, response);
-            }
-           // return null;
-        }
+        //        return Request.CreateResponse(HttpStatusCode.OK, "");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ErrorResponse response = new ErrorResponse(ex.Message);
+        //        return Request.CreateResponse(HttpStatusCode.InternalServerError, response);
+        //    }
+        //   // return null;
+        //}
         [Route(), HttpPost]
-        public async Task<HttpResponseMessage> SendConfirm()
+        public async Task<HttpResponseMessage> SendInviteHard()
         {
             //if (!ModelState.IsValid && request != null)
             //{
@@ -51,9 +51,10 @@ namespace Sabio.Web.Controllers.Api
 
             try
             {
-                    await SignUpService.NotifyEnlist();
+
+                    await SignUpService.SendInvitationHard();
                     SuccessResponse sr = new SuccessResponse();
-                   return Request.CreateResponse(HttpStatusCode.OK, "");
+                    return Request.CreateResponse(HttpStatusCode.OK, "");
             }
             catch (Exception ex)
             {

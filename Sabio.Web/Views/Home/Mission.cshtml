@@ -82,30 +82,30 @@
     <script type="text/javascript">
         var MISSION_INFO = @Html.RawJson(Model);
         ;
-
+        
         $(document).ready(function () {
             console.log(MISSION_INFO);
-            var $loading = $('#loading');
-            var $missionWrapper = $('#mission-wrapper');
-            var source = $("#entry-template").html();
-            var template = Handlebars.compile(source);
-
-
+                var $loading = $('#loading');
+                var $missionWrapper = $('#mission-wrapper');
+                var source = $("#entry-template").html();
+                var template = Handlebars.compile(source);
+                
+               
             var context = getMission();
 
-            var html = template(context);
+                var html = template(context);
 
-            $missionWrapper.append(html);
-            $missionWrapper.removeClass('hide');
-            $loading.hide();
+                $missionWrapper.append(html);
+                $missionWrapper.removeClass('hide');
+                $loading.hide();
 
             $('#enlist-btn').on("click touch", enlistToMission);
 
-
+            
             $('[rel="tooltip"]').tooltip();
 
         });
-
+        
         function getMissionById(missionId, getMission, onError) {
             var apiLink = apiRoot + "/" + missionId;
             var settings = {
@@ -128,10 +128,24 @@
                 bodyOne: "My budy Pete is a Veteran who's building a treehouse for his kids.",
                 bodyTwo: "Lets get together and help him out. Beer and Pizza provided!"};
 
+        function attendeeSuccess(){
+            console.log("attendee success");
         }
-
-        var enlistToMission = function () {
+        function attendeeError(){
+            console.log("attendee error");
+        }
+        function notifySuccess(){
+            console.log("notify success");
             window.location.href = '/home/mapApproved'
+        }
+        function notifyError(){
+            console.log("notify error");
+        }
+        var enlistToMission = function () {
+            event.preventDefault();
+            console.log("enlistToMission clicked");
+            stateside.services.events.insertAttendee(MISSION_INFO.item, attendeeSuccess, attendeeError);
+            stateside.services.events.sendNotification(notifySuccess, notifyError);
 
         }
 

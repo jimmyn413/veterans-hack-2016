@@ -8,6 +8,7 @@ using Sabio.Web.Services;
 using Sabio.Web.Domain;
 using Sabio.Web.Models.Responses;
 using Sabio.Web.Models.Requests;
+using System.Threading.Tasks;
 
 namespace Sabio.Web.Controllers.Api
 {
@@ -95,6 +96,26 @@ namespace Sabio.Web.Controllers.Api
 
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
+        [Route("confirm"), HttpPost]
+        public async Task<HttpResponseMessage> SendConfirm()
+        {
+            //if (!ModelState.IsValid && request != null)
+            //{
+            //    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            //}
 
+            try
+            {
+                await SignUpService.NotifyEnlist();
+                SuccessResponse sr = new SuccessResponse();
+                return Request.CreateResponse(HttpStatusCode.OK, "");
+            }
+            catch (Exception ex)
+            {
+                ErrorResponse response = new ErrorResponse(ex.Message);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, response);
+            }
+            // return null;
+        }
     }
 }
