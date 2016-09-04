@@ -2,18 +2,13 @@
 
 @{
     ViewBag.title = "Missions";
-    Layout = "~/Views/Shared/_LayoutAdminVar.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <link href="~/Content/admin.assets/css/app/rotating-cards.css" rel="stylesheet" />
 <link href="~/Content/admin.assets/css/app/custom.css" rel="stylesheet" />
-
-
-<input type="hidden" value="@Model.Item" id="eventIdFromModel" />
-
-
 <div id="loading">
-    <img src="~/Content/admin.assets/images/logos_dogtags_e.png" style="width: 76px;">
+    <img src="~/Content/admin.assets/images/logos_dogtags_e.png" style="width: 76px;"></img>
 </div>
 
 
@@ -32,25 +27,25 @@
                         <tbody>
                             <tr>
                                 <td>When</td>
-                                <td>09/22/2016 16:00</td>
+                                <td>{{date}}</td>
                             </tr>
                             <tr>
                                 <td>Where</td>
-                                <td id="">6577 S Copperwood Ave, Inglewood CA</td>
+                                <td id="">{{location}}</td>
                                 <td onclick="rotateCard(this)">
                                     <i class="fa fa-search"></i>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Description</td>
-                                <td><p>{{description}}</p></td>
+                                <td><p>{{bodyOne}}</p><p id="body-2" class="collapse">{{bodyTwo}}</p><a data-toggle="collapse" data-target="#body-2">Show More</a></td>
                             </tr>
                             <tr>
                                 <td>Duration</td>
-                                <td>4 hours</td>
+                                <td>2 Days</td>
                             </tr>
                             <tr>
-                                <td>Team Members</td>
+                                <td>Helpers</td>
                                 <td>
                                     <div class="col-xs-6 " style="text-align:center">
                                         <img src="/Content/admin.assets/images/people/50/woman-6.jpg" style="height:50px;width:50px; border-radius: 25px;" />   Gema
@@ -65,8 +60,8 @@
                         </tbody>
                     </table>
                     <div style="text-align: center">
-                        <button id="enlist" role="button" class="enlist-btn btn green-btn btn-large margin-right">Enlist</button>
-                        <a href="/Home/mappending" role="button" class="btn green-btn btn-large">See More Missions</a>
+                        <div id="enlist-btn" role="button" class="enlist-btn btn green-btn btn-large margin-right">Enlist</div>
+                        <a href="/Home/map" role="button" class="btn green-btn btn-large">See More Missions</a>
                     </div>
 
                 </div>
@@ -83,97 +78,60 @@
 
     </script>
 
-    <script src="~/Scripts/stateside.js"></script>
-    <script src="~/Scripts/stateside.services.events.js"></script>
+
     <script type="text/javascript">
-        var apiRoot = "api/events";
-        var missionId = $("#eventIdFromModel").val();
-
         var MISSION_INFO = @Html.RawJson(Model);
-        
+        ;
 
-
-        $('document').ready(function () {
+        $(document).ready(function () {
             console.log(MISSION_INFO);
-            
-            function eventSuccess(data) {
-                stateside.page.object = data.item;
-                var $loading = $('#loading');
-                var $missionWrapper = $('#mission-wrapper');
-                var source = $("#entry-template").html();
-                var template = Handlebars.compile(source);
-                var context = stateside.page.object
-                
-               
+            var $loading = $('#loading');
+            var $missionWrapper = $('#mission-wrapper');
+            var source = $("#entry-template").html();
+            var template = Handlebars.compile(source);
 
 
-                var html = template(context);
+            var context = getMission();
 
-                $missionWrapper.append(html);
-                $missionWrapper.removeClass('hide');
-                $loading.hide();
-                $('#enlist').on("click", enlistToMission);
+            var html = template(context);
 
-            }
-            function eventError(){
-                console.log("event error");
-            }
+            $missionWrapper.append(html);
+            $missionWrapper.removeClass('hide');
+            $loading.hide();
 
-            stateside.services.eventsInfo(MISSION_INFO.item, eventSuccess, eventError);
-            
-            
-            
-
-            
+            $('#enlist-btn').on("click touch", enlistToMission);
 
 
             $('[rel="tooltip"]').tooltip();
 
         });
-        
-     
 
-        //function getMissionById(missionId, getMission, onError) {
-        //    var apiLink = apiRoot + "/" + missionId;
-        //    var settings = {
-        //        cache: false
-        //            , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
-        //            , data: missionId
-        //            , dataType: "json"
-        //            , success: onSuccess
-        //            , error: onError
-        //            , type: "GET"
-        //    };
-        //    this.ajax(apiLink, settings);
-        //}
+        function getMissionById(missionId, getMission, onError) {
+            var apiLink = apiRoot + "/" + missionId;
+            var settings = {
+                cache: false
+                    , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
+                    , data: missionId
+                    , dataType: "json"
+                    , success: onSuccess
+                    , error: onError
+                    , type: "GET"
+            };
+            this.ajax(apiLink, settings);
+        }
 
-        //var getMission = function (data) {
+        var getMission = function (data) {
 
-        //    return { date: "September 12th, 2016",
-        //        location: "5102 S Garth Ave Ladera Heights, California",
-        //        title: "My New Mission",
-        //        bodyOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. ",
-        //        bodyTwo: "Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor"};
+            return { date: "Friday Sept 23th, 15:00",
+                location: "6577 S Copperwood Ave, Inglewood CA, 90302",
+                title: "Build a Treehouse",
+                bodyOne: "My budy Pete is a Veteran who's building a treehouse",
+                bodyTwo: "for his kids. Lets get together and help him out. Beer and Pizza provided!"};
 
-            //return { date: "September 12th, 2016",
-            //    location: "5102 S Garth Ave Ladera Heights, California",
-            //    title: "My New Mission",
-            //    bodyOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. ",
-            //    bodyTwo: "Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor"};
+        }
 
-        function attendeeSuccess(){
-            console.log("attendee success");
+        var enlistToMission = function () {
             window.location.href = '/home/mapApproved'
-        }
-        function attendeeError(){
-            console.log("attendee error");
-        }
-
-        var enlistToMission = function (event) {
-            event.preventDefault();
-            console.log("enlistToMission clicked");
-            stateside.services.events.insertAttendee(MISSION_INFO.item, attendeeSuccess, attendeeError);
-            
 
         }
 
@@ -193,6 +151,6 @@
 
     <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBYqzwyH6H-CRc3N3aIyD966wjokFIALUI'></script>
     <script type='text/javascript'>
-        function init_map(){var myOptions = {zoom:12,center:new google.maps.LatLng(33.995977,-118.37100559999999),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(33.995977,-118.37100559999999)});infowindow = new google.maps.InfoWindow({content:'<strong>My Mission</strong><br>5102 S Garth Ave<br>90034 Ladera Heights<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+        function init_map(){var myOptions = {zoom:12,center:new google.maps.LatLng(33.9808287,-118.3771056),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(33.995977,-118.37100559999999)});infowindow = new google.maps.InfoWindow({content:'<strong>Build a Treehouse</strong><br>6577 S Copper Ave,<br>Inglewood, 90302<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
 }
 
