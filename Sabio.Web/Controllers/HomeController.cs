@@ -47,7 +47,7 @@ namespace Sabio.Web.Controllers
             return View();
         }
 
-        [Route("mapapproved"), HttpGet]
+        //[Route("mapapproved"), HttpGet]
         public ActionResult MapApproved()
         {
             return View();
