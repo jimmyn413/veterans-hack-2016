@@ -50,7 +50,7 @@ namespace Sabio.Web.Controllers
         //[Route("map"), HttpGet]
         public ActionResult Map()
         {
-            return View("Map");
+            return View();
         }
 
 
