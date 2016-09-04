@@ -14,11 +14,10 @@ namespace Sabio.Web.Controllers.Api
     public class UserProfileApiController : ApiController
     {
         [Route, HttpGet]
-        public HttpResponseMessage GetUser(string userId)
+        public HttpResponseMessage GetUser()
         {
 
-
-            //senderId = UserService.GetCurrentUserId();
+            string userId = UserService.GetCurrentUserId();
 
             UserProfile user = UserProfileService.GetUser(userId);
 
@@ -28,6 +27,22 @@ namespace Sabio.Web.Controllers.Api
 
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
+
+        [Route("allusers"), HttpGet]
+        public HttpResponseMessage GetAllUsers()
+        {
+
+            List<UserProfile> userList = UserProfileService.GetAllUsers();
+
+            ItemsResponse<UserProfile> response = new ItemsResponse<UserProfile>();
+
+            response.Items = userList;
+
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
+
+
 
     }
 }
