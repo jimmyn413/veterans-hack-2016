@@ -1923,6 +1923,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\stateside.services.user.js" />
     <Content Include="Scripts\stateside.services.events.js" />
     <Content Include="Scripts\stateside.services.invite.js" />
     <Content Include="Scripts\stateside.services.login.js" />
