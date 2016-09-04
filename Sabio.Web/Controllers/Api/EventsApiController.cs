@@ -17,7 +17,7 @@ namespace Sabio.Web.Controllers.Api
         public HttpResponseMessage GetEvents()
         {
 
-            List<Event> events = EventService.GetEvents();
+            List<Event> events = EventService.GetAllEvents();
 
             ItemsResponse<Event> response = new ItemsResponse<Event>();
 
@@ -30,8 +30,9 @@ namespace Sabio.Web.Controllers.Api
         [Route("myevents"), HttpGet]
         public HttpResponseMessage MyEvents()
         {
+            string UserId = UserService.GetCurrentUserId();
 
-            List<Event> events = EventService.MyEvents();
+            List<Event> events = EventService.GetUserEvents(UserId);
 
             ItemsResponse<Event> response = new ItemsResponse<Event>();
 
@@ -40,20 +41,7 @@ namespace Sabio.Web.Controllers.Api
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
-
-
-        [Route("blooddrive"), HttpGet]
-        public HttpResponseMessage BloodDrive()
-        {
-
-            Event newEvent = EventService.BloodDrive();
-
-            ItemResponse<Event> response = new ItemResponse<Event>();
-
-            response.Item = newEvent;
-
-            return Request.CreateResponse(HttpStatusCode.OK, response);
-        }
+        
 
     }
 }
