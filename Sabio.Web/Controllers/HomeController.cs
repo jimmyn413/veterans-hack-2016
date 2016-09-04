@@ -53,6 +53,12 @@ namespace Sabio.Web.Controllers
             return View();
         }
 
+        //[Route("mappending"), HttpGet]
+        public ActionResult MapPending()
+        {
+            return View();
+        }
+
 
         public ActionResult MissionCreate()
         {

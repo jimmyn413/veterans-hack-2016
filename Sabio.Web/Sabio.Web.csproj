@@ -464,6 +464,7 @@
     <Content Include="Content\admin.assets\images\markers\bar-08.png" />
     <Content Include="Content\admin.assets\images\markers\bar-09.png" />
     <Content Include="Content\admin.assets\images\markers\bar-10.png" />
+    <Content Include="Content\admin.assets\images\markers\blue.png" />
     <Content Include="Content\admin.assets\images\markers\building-01.png" />
     <Content Include="Content\admin.assets\images\markers\building-02.png" />
     <Content Include="Content\admin.assets\images\markers\building-03.png" />
@@ -494,6 +495,7 @@
     <Content Include="Content\admin.assets\images\markers\gas-08.png" />
     <Content Include="Content\admin.assets\images\markers\gas-09.png" />
     <Content Include="Content\admin.assets\images\markers\gas-10.png" />
+    <Content Include="Content\admin.assets\images\markers\green.png" />
     <Content Include="Content\admin.assets\images\markers\house-01.png" />
     <Content Include="Content\admin.assets\images\markers\house-02.png" />
     <Content Include="Content\admin.assets\images\markers\house-03.png" />
@@ -505,6 +507,7 @@
     <Content Include="Content\admin.assets\images\markers\house-09.png" />
     <Content Include="Content\admin.assets\images\markers\house-10.png" />
     <Content Include="Content\admin.assets\images\markers\marker.png" />
+    <Content Include="Content\admin.assets\images\markers\red.png" />
     <Content Include="Content\admin.assets\images\markers\restaurant-01.png" />
     <Content Include="Content\admin.assets\images\markers\restaurant-02.png" />
     <Content Include="Content\admin.assets\images\markers\restaurant-03.png" />
@@ -535,6 +538,7 @@
     <Content Include="Content\admin.assets\images\markers\user-08.png" />
     <Content Include="Content\admin.assets\images\markers\user-09.png" />
     <Content Include="Content\admin.assets\images\markers\user-10.png" />
+    <Content Include="Content\admin.assets\images\markers\yellow.png" />
     <Content Include="Content\admin.assets\images\people\110\child-1.jpg" />
     <Content Include="Content\admin.assets\images\people\110\guy-1.jpg" />
     <Content Include="Content\admin.assets\images\people\110\guy-2.jpg" />
