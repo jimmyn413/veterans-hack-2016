@@ -5,18 +5,55 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Sabio.Web.Services;
+using Sabio.Web.Domain;
+using Sabio.Web.Models.Responses;
 
 namespace Sabio.Web.Controllers.Api
 {
     [RoutePrefix("api/events")]
     public class EventsApiController : ApiController
     {
-        /*public HttpResponseMessage DiscoverEvents()
+        [Route, HttpGet]
+        public HttpResponseMessage GetEvents()
         {
-            //- Get all events in this area
 
-            //- Call a userService 
-            EventService.GetNearbyEvents();
-        }*/
+            List<Event> events = EventService.GetEvents();
+
+            ItemsResponse<Event> response = new ItemsResponse<Event>();
+
+            response.Items = events;
+
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
+
+        [Route("myevents"), HttpGet]
+        public HttpResponseMessage MyEvents()
+        {
+
+            List<Event> events = EventService.MyEvents();
+
+            ItemsResponse<Event> response = new ItemsResponse<Event>();
+
+            response.Items = events;
+
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
+
+
+        [Route("blooddrive"), HttpGet]
+        public HttpResponseMessage BloodDrive()
+        {
+
+            Event newEvent = EventService.BloodDrive();
+
+            ItemResponse<Event> response = new ItemResponse<Event>();
+
+            response.Item = newEvent;
+
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
     }
 }
