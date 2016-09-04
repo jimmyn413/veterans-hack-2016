@@ -17,7 +17,7 @@ namespace Sabio.Web.Services
 {
     public class SignUpService : BaseService
     {
-        public static async Task SendInvitation()
+        public static async Task SendInvitation(string email)
         {
             //send confirmation email with embed guid
             //grab html for email body
@@ -26,17 +26,17 @@ namespace Sabio.Web.Services
 
             //embed guid email
             //--replace url
-            //string URL = "http://localhost:1552";
-            //html = html.Replace("[[URL-GOES-HERE]]", URL);
-            ////--replace endpoint
-            //string endPoint = "/Placeholder/";
-            //html = html.Replace("[[END-POINT-GOES-HERE]]", endPoint);
-            ////--replace guid
-            //string eventId = "hardcoded";
-            //html = html.Replace("[[xxxxxxxxxxxxxxx]]", eventId);
+            string URL = "http://localhost:1552";
+            html = html.Replace("[[URL-GOES-HERE]]", URL);
+            //--replace endpoint
+            string endPoint = "/home/mission/";
+            html = html.Replace("[[END-POINT-GOES-HERE]]", endPoint);
+            //--replace guid
+            string eventId = "8";
+            html = html.Replace("[[xxxxxxxxxxxxxxx]]", eventId);
             //--call email service
             EmailSendRequest confirmEmail = new EmailSendRequest();
-            confirmEmail.Destination = "gema123@mailinator.com";
+            confirmEmail.Destination = email;
             confirmEmail.Subject = "Your friend has invited you for a mission!";
             confirmEmail.Body = html;
             confirmEmail.From = "stateside@mailinator.com";
