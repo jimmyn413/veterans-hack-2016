@@ -1,0 +1,129 @@
+﻿@model Sabio.Web.Models.ViewModels.ItemViewModel<int>
+
+@{
+    ViewBag.title = "Missions";
+    Layout = "~/Views/Shared/_LayoutAdminSimple.cshtml";
+}
+<div id="loading">
+    <img src="~/Content/admin.assets/images/logos_dogtags_e.png" style="width: 76px;"></img>
+</div>
+
+<div id="mission-wrapper" class="hide" style="width: 90%; margin: 0px auto;">
+
+</div>
+
+
+@section Scripts{
+    <script id="entry-template" type="text/x-handlebars-template">
+        <h1 style="text-align: center;">Mission: {{title}} </h1>
+        <div class="">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>When</td>
+                        <td>{{date}}</td>
+                    </tr>
+                    <tr>
+                        <td>Where</td>
+                        <td id="">
+                            {{location}}  <a><i class="fa fa-map-marker" data-toggle="collapse" data-target="#map-hide"></i></a>
+                            <div id="map-hide" style='overflow:hidden;height:400px;width:100%;'>
+                                <div id='gmap_canvas' style='height:400px;width:100%'></div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td><p>{{bodyOne}}</p><p id="body-2" class="collapse">{{bodyTwo}}</p><a data-toggle="collapse" data-target="#body-2">Show More</a></td>
+                    </tr>
+                    <tr>
+                        <td>Start Date</td>
+                        <td>{{startDate}}</td>
+                    </tr>
+                    <tr>
+                        <td>End Date</td>
+                        <td>{{endDate}}</td>
+                    </tr>
+                    <tr>
+                        <td>Duration</td>
+                        <td>3 hours</td>
+                    </tr>
+                    <tr>
+                        <td>Helpers</td>
+                        <td>
+                            <img src="/Content/admin.assets/images/people/50/woman-6.jpg" style="height:50px;width:50px; border-radius: 25px;" />   Anna
+                            <br />
+                            <br />
+                            <img src="/Content/admin.assets/images/people/50/guy-2.jpg" style="height:50px;width:50px; border-radius: 25px;" />   Mike
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="enlist-btn" role="button" class="enlist-btn btn green-btn btn-large">Enlist</div>
+        <a href="/Home/mapPending" role="button" class="btn green-btn btn-large">See More Missions</a>
+    </script>
+
+    <script type="text/javascript">
+        var MISSION_INFO = @Html.RawJson(Model);
+        ;
+
+        $(document).ready(function () {
+            console.log(MISSION_INFO);
+            var $loading = $('#loading');
+            var $missionWrapper = $('#mission-wrapper');
+            var source = $("#entry-template").html();
+            var template = Handlebars.compile(source);
+
+
+            var context = getMission();
+
+            var html = template(context);
+
+            $missionWrapper.append(html);
+            $missionWrapper.removeClass('hide');
+            $loading.hide();
+
+            $('#enlist-btn').on("click touch", enlistToMission);
+
+        });
+
+        function getMissionById(missionId, getMission, onError) {
+            var apiLink = apiRoot + "/" + missionId;
+            var settings = {
+                cache: false
+                    , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
+                    , data: missionId
+                    , dataType: "json"
+                    , success: onSuccess
+                    , error: onError
+                    , type: "GET"
+            };
+            this.ajax(apiLink, settings);
+        }
+
+        var getMission = function (data) {
+
+            return { date: "September 12th, 2016",
+                location: "5102 S Garth Ave Ladera Heights, California",
+                title: "My New Mission",
+                bodyOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. ",
+                bodyTwo: "Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor"};
+
+        }
+
+        var enlistToMission = function () {
+            window.location.href = '/home/mapApproved'
+
+        }
+    </script>
+
+
+    <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBYqzwyH6H-CRc3N3aIyD966wjokFIALUI'></script>
+    <script type='text/javascript'>
+        function init_map(){var myOptions = {zoom:12,center:new google.maps.LatLng(33.995977,-118.37100559999999),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(33.995977,-118.37100559999999)});infowindow = new google.maps.InfoWindow({content:'<strong>My Mission</strong><br>5102 S Garth Ave<br>90034 Ladera Heights<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+}
+
+
