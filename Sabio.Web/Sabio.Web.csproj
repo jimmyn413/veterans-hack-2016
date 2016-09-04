@@ -291,6 +291,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Requests\AttendeeRequest.cs" />
     <Compile Include="Models\Requests\EmailSendRequest.cs" />
+    <Compile Include="Models\Requests\EventRequest.cs" />
     <Compile Include="Models\Requests\IdsRequest.cs" />
     <Compile Include="Models\Requests\InviteEmail.cs" />
     <Compile Include="Models\Requests\ItemsRequest.cs" />
@@ -751,6 +752,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="Controllers\SabioReadMe.txt" />
     <Content Include="Domain\SabioReadMe.txt" />
     <Content Include="EmailTemplates\MissionInvitation.html" />
@@ -1159,6 +1162,8 @@
     <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\LICENSE" />
     <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\package.json" />
     <Content Include="Scripts\googleMaps\js-info-bubble-gh-pages\README.md" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1935,6 +1940,8 @@
     <Content Include="Scripts\sabio\sabio.module.xeditable.js" />
     <Content Include="Scripts\stateside.js" />
     <Content Include="Scripts\stateside.services.signUp.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\_references.js" />
     <None Include="Views\Home\Map.cshtml" />
     <Content Include="Views\SabioReadMe.txt" />
