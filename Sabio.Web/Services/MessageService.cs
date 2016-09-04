@@ -38,7 +38,7 @@ namespace Sabio.Web.Services
                    p.ReceiverId = reader.GetSafeString(startingIndex++);
 
                    UserProfile sender = new UserProfile();
-                   sender.Firstname = reader.GetSafeString(startingIndex++);
+                   sender.FirstName = reader.GetSafeString(startingIndex++);
                    sender.LastName = reader.GetSafeString(startingIndex++);
                    sender.Type = reader.GetSafeString(startingIndex++);
                    sender.Avatar = reader.GetSafeString(startingIndex++);
@@ -50,7 +50,7 @@ namespace Sabio.Web.Services
 
                    UserProfile receiver = new UserProfile();
 
-                   receiver.Firstname = reader.GetSafeString(startingIndex++);
+                   receiver.FirstName = reader.GetSafeString(startingIndex++);
                    receiver.LastName = reader.GetSafeString(startingIndex++);
                    receiver.Type = reader.GetSafeString(startingIndex++);
                    receiver.Avatar = reader.GetSafeString(startingIndex++);
