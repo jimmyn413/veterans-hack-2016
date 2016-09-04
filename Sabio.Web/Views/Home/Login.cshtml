@@ -22,7 +22,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" class="form-control" placeholder="Username">
+                                    <input type="text" class="form-control" id="username3" placeholder="Username">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -32,7 +32,7 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <a href="index.html" class="btn green-btn">Login  <i class="fa fa-fw fa-unlock-alt"></i></a>
+                                <a class="btn green-btn" id="loginButton">Login  <i class="fa fa-fw fa-unlock-alt"></i></a>
                             </div>
                         </form>
                     </div>
@@ -52,4 +52,42 @@
             </div>
         </div>
     </div>
+
+    @section scripts{
+        <script src="~/Scripts/stateside.js"></script>
+        <script src="~/Scripts/stateside.services.login.js"></script>
+        <script type="text/javascript">
+
+
+        stateside.page.startUp = function () {
+
+            $('#loginButton').on('click', stateside.page.handlers.login);
+
+        }
+
+        stateside.page.handlers.login = function () {
+            event.preventDefault();
+            var data = {};
+            data.Email = $('#username3').val();
+            data.Password = $('#inputPassword3').val();
+            console.log('data: ', data);
+            stateside.services.login.logmein(data, onSuccess, onError);
+
+        }
+
+
+
+        var onSuccess = function () {
+            console.log('success');
+
+            window.location.href = "/Home/map";
+        }
+
+        var onError = function () {
+            console.log('error');
+        }
+
+
+        </script>
+    }
 </body>

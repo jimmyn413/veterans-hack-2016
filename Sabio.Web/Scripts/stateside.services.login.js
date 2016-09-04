@@ -1,6 +1,6 @@
 ﻿stateside.services.login = stateside.services.login || {};
 
-stateside.services.login = function (data, onSuccess, onError) {
+stateside.services.login.logmein = function (data, onSuccess, onError) {
     var url = "/api/login/";
 
     var settings = {
