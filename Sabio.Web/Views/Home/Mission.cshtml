@@ -118,6 +118,7 @@
             function eventError(){
                 console.log("event error");
             }
+
             stateside.services.eventsInfo(MISSION_INFO.item, eventSuccess, eventError);
             
             
@@ -170,7 +171,7 @@
 
         var enlistToMission = function () {
             event.preventDefault();
-            console.log("clicked");
+            console.log("enlistToMission clicked");
             stateside.services.events.insertAttendee(MISSION_INFO.item, attendeeSuccess, attendeeError);
             
 
