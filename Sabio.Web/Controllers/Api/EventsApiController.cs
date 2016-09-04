@@ -41,7 +41,21 @@ namespace Sabio.Web.Controllers.Api
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
-        
+
+        [Route("{id:int}"), HttpGet]
+        public HttpResponseMessage EventDetail(int EventId)
+        {
+
+            Event ThisEvent = EventService.GetEventDetail(EventId);
+
+            ItemResponse<Event> response = new ItemResponse<Event>();
+
+            response.Item = ThisEvent;
+
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
+
 
     }
 }
