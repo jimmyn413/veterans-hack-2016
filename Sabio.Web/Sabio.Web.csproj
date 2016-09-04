@@ -2008,6 +2008,7 @@
     <Content Include="Views\Home\Messages.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Home\MapApproved.cshtml" />
+    <Content Include="Views\Home\MapPending.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
