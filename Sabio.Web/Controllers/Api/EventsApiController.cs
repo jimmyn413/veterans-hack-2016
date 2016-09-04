@@ -43,10 +43,10 @@ namespace Sabio.Web.Controllers.Api
 
 
         [Route("{id:int}"), HttpGet]
-        public HttpResponseMessage EventDetail(int EventId)
+        public HttpResponseMessage EventDetail(int id)
         {
 
-            Event ThisEvent = EventService.GetEventDetail(EventId);
+            Event ThisEvent = EventService.GetEventDetail(id);
 
             ItemResponse<Event> response = new ItemResponse<Event>();
 
