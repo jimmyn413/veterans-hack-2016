@@ -1,10 +1,321 @@
 ﻿
+@model Sabio.Web.Models.ViewModels.ItemViewModel<int>
+
 @{
-    ViewBag.Title = "Test";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.title = "Missions";
+    Layout = "~/Views/Shared/_LayoutAdminSimple.cshtml";
+}
+
+<link href="~/Content/admin.assets/css/app/rotating-cards.css" rel="stylesheet" />
+
+<div id="loading">
+    <img src="~/Content/admin.assets/images/logos_dogtags_e.png" style="width: 76px;"></img>
+</div>
+
+
+<div id="mission-wrapper" class="hide" style="width: 90%; margin: 0px auto;">
+    
+</div>
+
+<div class="col-md-4 col-sm-6">
+    <div class="card-container manual-flip">
+        <div class="card">
+            <div class="front">
+                <div class="cover">
+                    <img src="images/rotating_card_thumb.png" />
+                </div>
+                <div class="user">
+                    <img class="img-circle" src="images/rotating_card_profile2.png" />
+                </div>
+                <div class="content">
+                    <div class="main">
+                        <h3 class="name">Andrew Mike</h3>
+                        <p class="profession">Web Developer</p>
+                        <p class="text-center">"Lamborghini Mercy <br>Your chick she so thirsty <br>I'm in that two seat Lambo"</p>
+                    </div>
+                    <div class="footer">
+                        <button class="btn btn-simple" onclick="rotateCard(this)">
+                            <i class="fa fa-mail-forward"></i> Manual Rotation
+                        </button>
+                    </div>
+                </div>
+            </div> <!-- end front panel -->
+            <div class="back">
+                <div class="header">
+                    <h5 class="motto">"To be or not to be, this is my awesome motto!"</h5>
+                </div>
+                <div class="content">
+                    <div class="main">
+                        <h4 class="text-center">Job Description</h4>
+                        <p class="text-center">Web design, Adobe Photoshop, HTML5, CSS3, Corel and many others...</p>
+
+                        <div class="stats-container">
+                            <div class="stats">
+                                <h4>235</h4>
+                                <p>
+                                    Followers
+                                </p>
+                            </div>
+                            <div class="stats">
+                                <h4>114</h4>
+                                <p>
+                                    Following
+                                </p>
+                            </div>
+                            <div class="stats">
+                                <h4>35</h4>
+                                <p>
+                                    Projects
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="footer">
+                    <button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)">
+                        <i class="fa fa-reply"></i> Back
+                    </button>
+                    <div class="social-links text-center">
+                        <a href="http://creative-tim.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                        <a href="http://creative-tim.com" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                        <a href="http://creative-tim.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                    </div>
+                </div>
+            </div> <!-- end back panel -->
+        </div> <!-- end card -->
+    </div> <!-- end card-container -->
+</div> <!-- end col sm 3 -->
+
+
+@section Scripts{
+<script id="entry-template" type="text/x-handlebars-template">
+    <h1 style="text-align: center;">Mission: {{title}} </h1>
+    <div class="card-container manual-flip">
+        <div class="card">
+            <div class="front">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>When</td>
+                            <td>{{date}}</td>
+                        </tr>
+                        <tr>
+                            <td>Where</td>
+                            <td id="">{{location}}</td>
+                            @*<td id=""><i class="fa fa-search"></i></td>*@
+                            <td onclick="rotateCard(this)">
+                                
+                                    <i class="fa fa-search"></i>
+                               
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td><p>{{body}}</p></td>
+                        </tr>
+                        <tr>
+                            <td>Start Date</td>
+                            <td>{{startDate}}</td>
+                        </tr>
+                        <tr>
+                            <td>End Date</td>
+                            <td>{{endDate}}</td>
+                        </tr>
+                        <tr>
+                            <td>Duration</td>
+                            <td>3 hours</td>
+                        </tr>
+                        <tr>
+                            <td>Helpers</td>
+                            <td>Anna</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="back">
+                <p>hello back</p>
+                <button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)">
+                    <i class="fa fa-reply"></i> Back
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="enlist-btn" role="button" class="enlist-btn btn green-btn btn-large">Enlist</div>
+    <a href="/Home/map" role="button" class="btn green-btn btn-large">See More Missions</a>
+</script>
+
+<script type="text/javascript">
+    var MISSION_INFO = @Html.RawJson(Model);
+    ;
+
+    $(document).ready(function () {       
+        console.log(MISSION_INFO);
+        var $loading = $('#loading');
+        var $missionWrapper = $('#mission-wrapper');
+        var source = $("#entry-template").html();
+        var template = Handlebars.compile(source);
+
+
+        var context = getMission();
+
+        var html = template(context);
+
+        $missionWrapper.append(html);
+        $missionWrapper.removeClass('hide');
+        $loading.hide();
+
+        $('#enlist-btn').on("click touch", enlistToMission);
+
+
+        $('[rel="tooltip"]').tooltip();
+    });
+
+    function getMissionById(missionId, getMission, onError) {
+        var apiLink = apiRoot + "/" + missionId;
+        var settings = {
+            cache: false
+                , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
+                , data: missionId
+                , dataType: "json"
+                , success: onSuccess
+                , error: onError
+                , type: "GET"
+        };
+        this.ajax(apiLink, settings);
+    }
+
+    var getMission = function (data) {
+
+        return { date: "September 12th, 2016", location: "Culver City, CA", title: "My New Mission", body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor" };
+
+    }
+
+    var enlistToMission = function () {
+        window.location.href = '/home/map'
+    
+    }
+
+
+    function rotateCard(btn) {
+        var $card = $(btn).closest('.card-container');
+        console.log($card);
+        if ($card.hasClass('hover')) {
+            $card.removeClass('hover');
+        } else {
+            $card.addClass('hover');
+        }
+    }
+
+</script>
 }
 
 
-    <p>test</p>
+
+
+
+@*@{
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/_LayoutAdminSimple.cshtml";
+}
+<link href="~/Content/admin.assets/css/app/rotating-cards.css" rel="stylesheet" />
+
+  <div class="col-md-4 col-sm-6">
+    <div class="card-container manual-flip">
+        <div class="card">
+            <div class="front">
+                <div class="cover">
+                    <img src="images/rotating_card_thumb.png" />
+                </div>
+                <div class="user">
+                    <img class="img-circle" src="images/rotating_card_profile2.png" />
+                </div>
+                <div class="content">
+                    <div class="main">
+                        <h3 class="name">Andrew Mike</h3>
+                        <p class="profession">Web Developer</p>
+                        <p class="text-center">"Lamborghini Mercy <br>Your chick she so thirsty <br>I'm in that two seat Lambo"</p>
+                    </div>
+                    <div class="footer">
+                        <button class="btn btn-simple" onclick="rotateCard(this)">
+                            <i class="fa fa-mail-forward"></i> Manual Rotation
+                        </button>
+                    </div>
+                </div>
+            </div> <!-- end front panel -->
+            <div class="back">
+                <div class="header">
+                    <h5 class="motto">"To be or not to be, this is my awesome motto!"</h5>
+                </div>
+                <div class="content">
+                    <div class="main">
+                        <h4 class="text-center">Job Description</h4>
+                        <p class="text-center">Web design, Adobe Photoshop, HTML5, CSS3, Corel and many others...</p>
+
+                        <div class="stats-container">
+                            <div class="stats">
+                                <h4>235</h4>
+                                <p>
+                                    Followers
+                                </p>
+                            </div>
+                            <div class="stats">
+                                <h4>114</h4>
+                                <p>
+                                    Following
+                                </p>
+                            </div>
+                            <div class="stats">
+                                <h4>35</h4>
+                                <p>
+                                    Projects
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="footer">
+                    <button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)">
+                        <i class="fa fa-reply"></i> Back
+                    </button>
+                    <div class="social-links text-center">
+                        <a href="http://creative-tim.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                        <a href="http://creative-tim.com" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                        <a href="http://creative-tim.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                    </div>
+                </div>
+            </div> <!-- end back panel -->
+        </div> <!-- end card -->
+    </div> <!-- end card-container -->
+</div> <!-- end col sm 3 -->*@
+
+
+
+
+
+@*<script>
+    $().ready(function () {
+        $('[rel="tooltip"]').tooltip();
+
+    });
+
+    function rotateCard(btn) {
+        var $card = $(btn).closest('.card-container');
+        console.log($card);
+        if ($card.hasClass('hover')) {
+            $card.removeClass('hover');
+        } else {
+            $card.addClass('hover');
+        }
+    }
+
+</script>*@
+
+
+
+
+
 
 
